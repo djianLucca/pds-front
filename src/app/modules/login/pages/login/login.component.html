@@ -1,0 +1,38 @@
+<div class="z-depth-5 card-login">
+  <!-- Buttons to change between login and sign up -->
+  <div class="btns">
+    <!-- <i 
+      *ngIf="!isAtletasMenuOpen" 
+      (click)="isAtletasMenuOpen = !isAtletasMenuOpen" 
+      class="material-icons medium icon-menu-atletas z-depth-3 clicavel"
+    >supervisor_account</i> -->
+  </div>
+
+  <!-- Logo -->
+  <div class="logo">
+
+  </div>
+
+  <!-- Login/Sign up inputs -->
+  <div class="form">
+
+  </div>
+</div>
+
+<!-- Map -->
+<agm-map 
+  [latitude]="lat" 
+  [longitude]="lng" 
+  [zoom]="zoom" 
+  [styles]="style" 
+  [clickableIcons]="false" 
+  [disableDoubleClickZoom]="false"
+  [keyboardShortcuts]="false" 
+  [mapDraggable]="false" 
+  [mapTypeControl]="true" 
+  [panControl]="true" 
+  [scrollwheel]="false" 
+  [streetViewControl]="false"
+  [usePanning]="true" 
+  [zoomControl]="false"
+></agm-map>

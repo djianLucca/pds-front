@@ -1,0 +1,25 @@
+agm-map {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    right: 0px;
+}
+/* 
+.flex-login {
+    display: flex;
+    align-self: stretch;
+    height: 100vh;
+    width: 200px;
+} */
+
+.card-login {    
+    padding-top: 10px;
+    width: 25vw;
+    position: fixed;
+    height: 100%;
+    left: 0;
+    z-index: 999;
+    background-color: #f4f5f2;
+    border-right: 10px solid #0c4444;
+}
