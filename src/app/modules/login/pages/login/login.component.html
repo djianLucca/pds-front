@@ -1,24 +1,3 @@
-<div class="z-depth-5 card-login">
-  <!-- Buttons to change between login and sign up -->
-  <div class="btns">
-    <!-- <i 
-      *ngIf="!isAtletasMenuOpen" 
-      (click)="isAtletasMenuOpen = !isAtletasMenuOpen" 
-      class="material-icons medium icon-menu-atletas z-depth-3 clicavel"
-    >supervisor_account</i> -->
-  </div>
-
-  <!-- Logo -->
-  <div class="logo">
-
-  </div>
-
-  <!-- Login/Sign up inputs -->
-  <div class="form">
-
-  </div>
-</div>
-
 <!-- Map -->
 <agm-map 
   [latitude]="lat" 
@@ -36,3 +15,38 @@
   [usePanning]="true" 
   [zoomControl]="false"
 ></agm-map>
+
+<!-- Blank background -->
+<div class="bg-layer">
+  <div class="login-card">
+      <div class="row">
+        <div class="col s12">
+          <h3 class="login-header center-align">SMM Tool</h3>
+          <div class="divider"></div>          
+        </div>
+        <div class="col s12">
+          <br>
+          <br>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">email</i>
+              <input id="icon_prefix" type="email" [(ngModel)]="loginData.email">
+              <label for="icon_prefix">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">vpn_key</i>
+              <input id="icon_telephone" type="password" [(ngModel)]="loginData.password">
+              <label for="icon_telephone">Senha</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <a (click)="login()" class="btn right">LOGIN</a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

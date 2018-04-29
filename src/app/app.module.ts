@@ -1,3 +1,5 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AuthModule, HttpsRequestInterceptor } from './shared/auth/auth.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -7,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { GOOGLE_MAPS_API_KEY } from './shared/globals/constants';
+import { BaseService } from './shared/services/base.service';
 
 
 @NgModule({
@@ -18,9 +21,15 @@ import { GOOGLE_MAPS_API_KEY } from './shared/globals/constants';
     AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: GOOGLE_MAPS_API_KEY
-    })
+    }),
+    AuthModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    BaseService,
+    HttpClient,
+    HttpsRequestInterceptor
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

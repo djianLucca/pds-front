@@ -1,5 +1,7 @@
+import { LoginService } from './login.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { AgmCoreModule } from '@agm/core';
 
@@ -10,8 +12,10 @@ import { LoginComponent } from './pages/login/login.component';
   imports: [
     CommonModule,
     LoginRoutingModule,
-    AgmCoreModule
+    AgmCoreModule,
+    FormsModule
   ],
+  providers: [LoginService],
   declarations: [LoginComponent]
 })
 export class LoginModule { }
