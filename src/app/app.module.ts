@@ -1,3 +1,5 @@
+import { AuthGuard } from './shared/auth/auth.guard';
+import { AuthService } from './shared/auth/auth.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthModule, HttpsRequestInterceptor } from './shared/auth/auth.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -28,7 +30,9 @@ import { BaseService } from './shared/services/base.service';
   providers: [
     BaseService,
     HttpClient,
-    HttpsRequestInterceptor
+    HttpsRequestInterceptor,
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
