@@ -28,11 +28,11 @@ agm-map {
     padding: 10px 25px;
 }
 
-.login-header {
-    font-weight: 300;
-    font-family: Roboto Condensed;
-}
-
 form {
     margin-top: 20px;
+}
+
+.button-flex{
+    display: flex;
+    justify-content: flex-end;
 }

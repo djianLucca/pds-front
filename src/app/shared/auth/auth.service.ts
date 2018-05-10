@@ -8,12 +8,14 @@ import { IPct } from '../../interfaces/pct';
 @Injectable()
 export class AuthService {
 
-  url = 'login';
-
   constructor(private _baseService: BaseService) { }
 
   login(data): Observable<any> {
-    return this._baseService.post(this.url, data);
+    return this._baseService.post('login', data);
+  }
+
+  signup(data): Observable<any> {
+    return this._baseService.post('pct', data);
   }
 
   // token

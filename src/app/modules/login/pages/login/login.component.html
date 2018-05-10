@@ -16,35 +16,71 @@
   [zoomControl]="false"
 ></agm-map>
 
-<!-- Blank background -->
 <div class="bg-layer">
   <div class="login-card">
       <div class="row">
         <div class="col s12">
-          <h3 class="login-header center-align">SMM Tool</h3>
+          <h3 class="logo center-align">SMM Tool</h3>
           <div class="divider"></div>          
         </div>
-        <form [formGroup]="formLogin" (ngSubmit)="login()" class="col s12">
+
+        <!-- Login -->
+        <form *ngIf="isLoginFormOn"  [formGroup]="formLogin" (ngSubmit)="login()" class="col s12">
           <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">email</i>
-              <input id="icon_prefix" type="email" formControlName="email" [(ngModel)]="loginData.email">
+              <input id="icon_prefix" type="email" formControlName="emailLogin" [(ngModel)]="loginData.email" autocomplete="login-email">
               <label for="icon_prefix">Email</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">vpn_key</i>
-              <input id="icon_telephone" type="password" formControlName="password" [(ngModel)]="loginData.password">
-              <label for="icon_telephone">Senha</label>
+              <input id="icon_telephone" type="password" formControlName="passwordLogin" [(ngModel)]="loginData.password" autocomplete="login-password">
+              <label for="icon_telephone">Senha</label> 
             </div>
           </div>
           <div class="row">
             <div class="col s12">
-              <button type="submit" class="btn right">LOGIN</button>
+              <div class="button-flex">
+                <a class="btn white teal-text right" style="margin-right: 10px;" (click)="isLoginFormOn = !isLoginFormOn">SIGN UP</a>
+                <button type="submit" class="btn right">LOGIN</button>
+              </div>
             </div>
           </div>
         </form>
+
+        <!-- Sign Up -->
+        <form *ngIf="!isLoginFormOn"  [formGroup]="formSignUp" (ngSubmit)="signUp()" class="col s12">
+            <div class="row">
+                <div class="input-field col s12 m6">
+                  <input id="name_input" type="text" formControlName="name" [(ngModel)]="signUpData.user.person.name">
+                  <label for="name_input">Nome</label> 
+                </div>
+                <div class="input-field col s12 m6">
+                  <input id="pct_input" type="text" formControlName="pct" [(ngModel)]="signUpData.name">
+                  <label for="pct_input">Pct</label>
+                </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <input id="email_input" type="email" formControlName="emailSignUp" [(ngModel)]="signUpData.user.email" autocomplete="signup-email">
+                <label for="email_input">Email</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <input id="password_input" type="password" formControlName="passwordSignUp" [(ngModel)]="signUpData.user.password" autocomplete="signup-password">
+                <label for="password_input">Senha</label> 
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <div class="button-flex">
+                  <a class="btn white teal-text right" style="margin-right: 10px;" (click)="isLoginFormOn = !isLoginFormOn">LOGIN</a>
+                  <button type="submit" class="btn right">CADASTRAR</button>
+                </div>
+              </div>
+            </div>
+          </form>
       </div>
   </div>
 </div>

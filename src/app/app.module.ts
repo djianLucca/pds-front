@@ -1,9 +1,11 @@
+import { NavbarModule } from './shared/components/navbar/navbar.module';
 import { AuthGuard } from './shared/auth/auth.guard';
 import { AuthService } from './shared/auth/auth.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthModule, HttpsRequestInterceptor } from './shared/auth/auth.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AgmCoreModule } from '@agm/core';
 
@@ -21,11 +23,13 @@ import { BaseService } from './shared/services/base.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     AgmCoreModule.forRoot({
       apiKey: GOOGLE_MAPS_API_KEY
     }),
     AuthModule,
-    HttpClientModule
+    HttpClientModule,
+    NavbarModule
   ],
   providers: [
     BaseService,

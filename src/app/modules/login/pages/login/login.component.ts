@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ISubscription } from 'rxjs/Subscription';
+import { ISubscription, Subscription } from 'rxjs/Subscription';
 
 import { MAP_STYLE } from '../../../../shared/globals/constants';
 import { ILogin } from './../../../../interfaces/login';
 import { AuthService } from './../../../../shared/auth/auth.service';
+import { IPct } from '../../../../interfaces/pct';
 
 @Component({
   selector: 'app-login',
@@ -14,10 +15,15 @@ import { AuthService } from './../../../../shared/auth/auth.service';
 })
 export class LoginComponent implements OnInit {
   //Settings
-  subscription: ISubscription
+  subscription: ISubscription;
+
   formLogin: FormGroup
+  formSignUp: FormGroup
+
+  isLoginFormOn = true;
 
   loginData: ILogin = {};
+  signUpData: IPct = { user: { person: {} } };
 
   //Map initial position
   lat = 0;
@@ -35,11 +41,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.mapAnimation();
-    this.initForm();
+    this.initForms();
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe()
+      this.subscription.unsubscribe();
   }
 
   //Make the map do a smooth animation
@@ -53,22 +59,54 @@ export class LoginComponent implements OnInit {
     }, ms / fps)
   }
 
-  initForm(){
-    this.formLogin = this._formBuilder.group({   
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    });
+  initForms(){
+    this.initLoginForm();
+    this.initSignUpForm();
   }
 
+  initLoginForm(){
+    this.formLogin = this._formBuilder.group({   
+      emailLogin: ['', [Validators.required, Validators.email]],
+      passwordLogin: ['', Validators.required]
+    });
+  }
+  
+  initSignUpForm(){
+    this.formSignUp = this._formBuilder.group({   
+      name: ['', Validators.required],
+      pct: ['', Validators.required],
+      emailSignUp: ['', [Validators.required, Validators.email]],
+      passwordSignUp: ['', Validators.required]
+    });
+  }
+  
+
   login(){
-    if(this.formLogin.valid){
-      this.subscription = this._auth.login(this.loginData)
-        .subscribe(res => {
-          if(res.token){
-            this._auth.token = res.token;
-            this._router.navigate(['/']);
-          }
-        });
+    if(!this.formLogin.valid){
+      console.log('ERRO');
+      return false;
     }
+
+    const subs = this._auth.login(this.loginData)
+      .subscribe(res => {
+        if(res.token){
+          this._auth.token = res.token;
+          this._router.navigate(['/']);
+        }
+      });
+    this.subscription = subs;
+  }
+
+  signUp(){
+    if(!this.formSignUp.valid){
+      console.log('ERRO');
+      return false;
+    }
+
+    const subs = this._auth.signup(this.signUpData)
+      .subscribe(res => {
+        console.log(res);
+      })
+    this.subscription = subs;
   }
 }

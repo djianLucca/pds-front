@@ -1,5 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+:root{
+    --first-color: #1F4E5F;
+    --second-color: #79A8A9;
+    --third-color: #AACFD0;
+    --forth-color: #F4F7F7;
+}
+
 /* Remove use terms from map*/
 .gmnoprint {
     display: none;
+}
+
+.logo {
+    font-weight: 300;
+    font-family: Roboto Condensed;
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+.not-clickable{
+    cursor: default;
+}
+
+.no-select{
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
 }

@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="header-content">
+    <button mat-icon-button color="primary">
+      <mat-icon>add_box</mat-icon>
+    </button>
+    <h5>Startups</h5>
+</div>
+  <mat-table [dataSource]="dataSource">
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let startup"> {{startup.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Area Column -->
+    <ng-container matColumnDef="area">
+      <mat-header-cell *matHeaderCellDef> Area </mat-header-cell>
+      <mat-cell *matCellDef="let startup"> {{startup.area.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Person Column -->
+    <ng-container matColumnDef="person">
+      <mat-header-cell *matHeaderCellDef> Responsável </mat-header-cell>
+      <mat-cell *matCellDef="let startup"> {{startup.person.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
+      <mat-cell *matCellDef="let startup"> 
+          <i class="material-icons clickable">editar</i>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

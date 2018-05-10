@@ -1,0 +1,18 @@
+.sidenav {
+    padding-top: 65px;
+    z-index: -1;
+    border-right: 1px solid rgba(0,0,0,0.14);
+}
+.sidenav-header{
+    padding: 10px 0 15px 32px;
+    border-bottom: 1px solid rgba(0,0,0,0.14);
+}
+.email{
+    font-style: italic;
+}
+h1, h2, h3, h5, h6{
+    margin: 2px 0 2px 0;
+}
+h4{
+    margin: 5px 0 5px 0;
+}
