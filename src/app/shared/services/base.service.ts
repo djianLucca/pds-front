@@ -13,8 +13,12 @@ export class BaseService {
     return this.http.get<any>(`${SERVER_URL}${url}`);
   }
 
-  public getId(url: string, id: any): Observable<any> {
+  public getById(url: string, id: any): Observable<any> {
     return this.http.get<any>(`${SERVER_URL}${url}/${id}`);
+  }
+
+  public getWithParams(url: string, params: string){
+    return this.http.get<any>(`${SERVER_URL}${url}/${params}`);
   }
 
   public put(url: string, data: object): Observable<any> {

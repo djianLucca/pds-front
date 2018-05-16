@@ -20,15 +20,15 @@ export class AuthService {
 
   // token
   public set token(token: string) {
-    sessionStorage.setItem('token', token);
+    localStorage.setItem('token', token);
   }
 
   public get token() {
-    return sessionStorage.getItem('token');
+    return localStorage.getItem('token');
   }
 
   public tokenRemove() {
-    sessionStorage.removeItem('token');
+    localStorage.removeItem('token');
   }
 
   public get tokenDecoded(): IPct {

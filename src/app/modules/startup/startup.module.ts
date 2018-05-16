@@ -2,20 +2,25 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MatTableModule } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 
 import { StartupRoutingModule } from './startup-routing.module';
 import { StartupListComponent } from './pages/startup-list/startup-list.component';
+import { StartupService } from '../../shared/services/startup.service';
+import { StartupFormComponent } from './pages/startup-form/startup-form.component';
+import { MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     StartupRoutingModule,
     MatTableModule,
-    MatButtonModule,
-    MatIconModule
+    MatFormFieldModule,
+    MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  declarations: [StartupListComponent]
+  providers: [StartupService],
+  declarations: [StartupListComponent, StartupFormComponent]
 })
 export class StartupModule { }

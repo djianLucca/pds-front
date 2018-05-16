@@ -1,5 +1,4 @@
 import { NgModule, Injectable } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
@@ -10,24 +9,23 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('token') || 'teste';
-    const dupReq = req.clone({
+    const newRequest = req.clone({
     headers: req.headers.set('x-access-token', token),
   });
 
-  return next.handle(dupReq);
+  return next.handle(newRequest);
   }
 }
 
 @NgModule({
   imports: [
-    CommonModule
   ],
   providers: [
    {
     provide: HTTP_INTERCEPTORS,
     useClass: HttpsRequestInterceptor,
     multi: true,
-   },
+   }
   ]
 })
 export class AuthModule { }

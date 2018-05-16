@@ -17,8 +17,8 @@ export class LoginComponent implements OnInit {
   //Settings
   subscription: ISubscription;
 
-  formLogin: FormGroup
-  formSignUp: FormGroup
+  formLogin: FormGroup;
+  formSignUp: FormGroup;
 
   isLoginFormOn = true;
 
@@ -40,65 +40,70 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.clearToken();
     this.mapAnimation();
     this.initForms();
   }
 
   ngOnDestroy(): void {
-      this.subscription.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   //Make the map do a smooth animation
-  mapAnimation(){ 
+  mapAnimation() {
     const ms = 1000;
     const fps = 60;
 
-    setInterval(()=>{
-      if(this.lng > 360) this.lng = 0;
+    setInterval(() => {
+      if (this.lng > 360) this.lng = 0;
       this.lng += 0.1;
     }, ms / fps)
   }
 
-  initForms(){
+  clearToken(){
+    this._auth.tokenRemove()
+  }
+
+  initForms() {
     this.initLoginForm();
     this.initSignUpForm();
   }
 
-  initLoginForm(){
-    this.formLogin = this._formBuilder.group({   
+  initLoginForm() {
+    this.formLogin = this._formBuilder.group({
       emailLogin: ['', [Validators.required, Validators.email]],
       passwordLogin: ['', Validators.required]
     });
   }
-  
-  initSignUpForm(){
-    this.formSignUp = this._formBuilder.group({   
+
+  initSignUpForm() {
+    this.formSignUp = this._formBuilder.group({
       name: ['', Validators.required],
       pct: ['', Validators.required],
       emailSignUp: ['', [Validators.required, Validators.email]],
       passwordSignUp: ['', Validators.required]
     });
   }
-  
 
-  login(){
-    if(!this.formLogin.valid){
+
+  login() {
+    if (!this.formLogin.valid) {
       console.log('ERRO');
       return false;
     }
 
     const subs = this._auth.login(this.loginData)
       .subscribe(res => {
-        if(res.token){
-          this._auth.token = res.token;
-          this._router.navigate(['/']);
-        }
+        if (!res.token) return;
+
+        this._auth.token = res.token;
+        this._router.navigate(['/']);
       });
     this.subscription = subs;
   }
 
-  signUp(){
-    if(!this.formSignUp.valid){
+  signUp() {
+    if (!this.formSignUp.valid) {
       console.log('ERRO');
       return false;
     }

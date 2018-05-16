@@ -1,19 +1,20 @@
-import { NavbarModule } from './shared/components/navbar/navbar.module';
-import { AuthGuard } from './shared/auth/auth.guard';
 import { AuthService } from './shared/auth/auth.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { AuthModule, HttpsRequestInterceptor } from './shared/auth/auth.module';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { GOOGLE_MAPS_API_KEY } from './shared/globals/constants';
 import { AgmCoreModule } from '@agm/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { GOOGLE_MAPS_API_KEY } from './shared/globals/constants';
-import { BaseService } from './shared/services/base.service';
+import { AuthGuard } from './shared/auth/auth.guard';
+import { AuthModule, HttpsRequestInterceptor } from './shared/auth/auth.module';
+import { NavbarModule } from './shared/components/navbar/navbar.module';
+import { ServicesModule } from './shared/services/services.module';
+import { FormBuilder } from '@angular/forms';
 
 
 @NgModule({
@@ -29,14 +30,15 @@ import { BaseService } from './shared/services/base.service';
     }),
     AuthModule,
     HttpClientModule,
-    NavbarModule
+    NavbarModule,
+    ServicesModule
   ],
   providers: [
-    BaseService,
+    AuthService,
     HttpClient,
     HttpsRequestInterceptor,
-    AuthService,
-    AuthGuard
+    AuthGuard,
+    FormBuilder
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,8 @@
+import { StartupService } from './../../../../shared/services/startup.service';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { IStartup } from '../../../../interfaces/startup';
+import { FacadeService } from '../../../../shared/services/facade.service';
 
 @Component({
   selector: 'app-startup-list',
@@ -8,34 +10,24 @@ import { IStartup } from '../../../../interfaces/startup';
   styleUrls: ['./startup-list.component.css']
 })
 export class StartupListComponent implements OnInit {
-  startups: IStartup[] = [
-    {
-      id: '1',
-      name: 'Startup 1',
-      area: {
-        name: 'Area 1'
-      },
-      person: {
-        name: 'Person 1'
-      }
-    },{
-      id: '2',
-      name: 'Startup 2',
-      area: {
-        name: 'Area 2'
-      },
-      person: {
-        name: 'Person 2'
-      }
-    }
-  ];
 
+  startups: MatTableDataSource<IStartup[]>;
   displayedColumns = ['name', 'area', 'person', 'actions'];
-  dataSource = new MatTableDataSource(this.startups);
 
-  constructor() { }
+  constructor(private facade: FacadeService) { }
 
   ngOnInit() {
+    this.getStartups();
+  }
+
+  getStartups(){
+    this.facade.getStartups()
+      .subscribe( response => this.startups = new MatTableDataSource(response));
+  }
+
+  deleteStartup(id){
+    this.facade.deleteStartup(id)
+      .subscribe(() => this.getStartups());
   }
 
 }
