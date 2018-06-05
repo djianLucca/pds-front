@@ -1,11 +1,14 @@
-<ul id="slide-out" class="sidenav sidenav-fixed z-depth-0">
+<ul id="slide-out" class="sidenav sidenav-fixed">
   <div class="sidenav-header">
-    <h4>{{pct?.name}}</h4>
-    <h6>{{pct?.user?.person?.name}} | <span class="grey-text email">{{pct?.user?.email}}</span></h6>
+    <div class="sidenav-header-content">
+      <h4>{{pct?.name}}</h4>
+      <h6>{{pct?.user?.person?.name}} | <span class="grey-text email">{{pct?.user?.email}}</span></h6>
+    </div>
+    <i class="clickable small material-icons" (click)="logout()" >power_settings_new</i>
   </div>
   <li>
     <a routerLink="/startup">Startups</a>
-    <a class="grey-text">Modelos</a>
+    <a routerLink="/model">Modelos</a>
     <a class="grey-text">Relatórios</a>
   </li>
 </ul>

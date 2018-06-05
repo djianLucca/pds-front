@@ -6,6 +6,7 @@ import { FacadeService } from './facade.service';
 import { StartupService } from './startup.service';
 import { BaseService } from './base.service';
 import { AreaService } from './area.service';
+import { ModelService } from './model.service';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { AreaService } from './area.service';
 
     BaseService,
     StartupService,
-    AreaService
+    AreaService,
+    ModelService
   ]
 })
 export class ServicesModule { }

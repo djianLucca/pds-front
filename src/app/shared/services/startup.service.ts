@@ -21,6 +21,11 @@ export class StartupService {
     return this.baseService.post(this.url, startup);
   }
 
+  put(startup: IStartup){
+    const url = this.url + '/' + startup.id
+    return this.baseService.put(url, startup);
+  }
+
   delete(id: string){
     return this.baseService.delete(this.url, id);
   }

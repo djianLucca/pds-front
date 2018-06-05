@@ -4,8 +4,19 @@
     border-right: 1px solid rgba(0,0,0,0.14);
 }
 .sidenav-header{
-    padding: 10px 0 15px 32px;
+    display: flex;
+    padding: 10px 0 15px 0px;
     border-bottom: 1px solid rgba(0,0,0,0.14);
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+}
+.sidenav-header-content{
+    display: flex;
+    flex-direction: column;
+}
+.sidenav-header-logout{
+
 }
 .email{
     font-style: italic;

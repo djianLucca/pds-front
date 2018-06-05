@@ -1,4 +1,4 @@
-export interface IArea {
+export interface IModel {
     id?: string;
     name?: string;
 }

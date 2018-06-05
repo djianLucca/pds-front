@@ -3,7 +3,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ISubscription, Subscription } from 'rxjs/Subscription';
 
-import { MAP_STYLE } from '../../../../shared/globals/constants';
+// import { MAP_STYLE } from '../../../../shared/globals/constants';
 import { ILogin } from './../../../../interfaces/login';
 import { AuthService } from './../../../../shared/auth/auth.service';
 import { IPct } from '../../../../interfaces/pct';
@@ -26,12 +26,12 @@ export class LoginComponent implements OnInit {
   signUpData: IPct = { user: { person: {} } };
 
   //Map initial position
-  lat = 0;
-  lng = 0;
-  zoom = 3;
+  // lat = 0;
+  // lng = 0;
+  // zoom = 3;
 
   //Map style
-  style = MAP_STYLE;
+  // style = MAP_STYLE;
 
   constructor(
     private _auth: AuthService,
@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.clearToken();
-    this.mapAnimation();
     this.initForms();
   }
 
@@ -50,15 +49,15 @@ export class LoginComponent implements OnInit {
   }
 
   //Make the map do a smooth animation
-  mapAnimation() {
-    const ms = 1000;
-    const fps = 60;
+  // mapAnimation() {
+  //   const ms = 1000;
+  //   const fps = 60;
 
-    setInterval(() => {
-      if (this.lng > 360) this.lng = 0;
-      this.lng += 0.1;
-    }, ms / fps)
-  }
+  //   setInterval(() => {
+  //     if (this.lng > 360) this.lng = 0;
+  //     this.lng += 0.1;
+  //   }, ms / fps)
+  // }
 
   clearToken(){
     this._auth.tokenRemove()
@@ -87,10 +86,7 @@ export class LoginComponent implements OnInit {
 
 
   login() {
-    if (!this.formLogin.valid) {
-      console.log('ERRO');
-      return false;
-    }
+    if (!this.formLogin.valid) return false;
 
     const subs = this._auth.login(this.loginData)
       .subscribe(res => {

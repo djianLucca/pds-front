@@ -12,7 +12,7 @@ agm-map {
     left: 0px;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-image: linear-gradient(to bottom, #2980b9, #3498db);
     display: flex;
     align-items: center;
     justify-content: center;

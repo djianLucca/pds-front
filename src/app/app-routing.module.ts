@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'startup',
     loadChildren: 'app/modules/startup/startup.module#StartupModule',
     canActivate: [AuthGuard]
+  },{
+    path: 'model',
+    loadChildren: 'app/modules/model/model.module#ModelModule',
+    canActivate: [AuthGuard]
   }
 ];
 

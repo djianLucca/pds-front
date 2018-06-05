@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { FacadeService } from '../../../../shared/services/facade.service';
 import { IStartup } from '../../../../interfaces/startup';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-startup-form',
@@ -17,15 +17,20 @@ export class StartupFormComponent implements OnInit {
   areas: IArea[] = [];
   startup: IStartup = {person: {}}
 
+  hasPressedSave = false;
+  isUpdating = false;
+
   constructor(
     private _formBuilder: FormBuilder,
     private facade: FacadeService,
     private _router: Router,
+    private _activatedRouter: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.getAreas();
     this.initForm();
+    this.checkOperation();
   }
 
   getAreas(){
@@ -40,12 +45,43 @@ export class StartupFormComponent implements OnInit {
       areaId: ['', Validators.required]
     });
   }
+  
+  checkOperation(){
+    this._activatedRouter.queryParams.subscribe((params: any) => {
+      if (!params['id']) return false;
+
+      const id = params['id'];
+      this.isUpdating = true;
+
+      this.facade.getStartupsById(id)
+        .subscribe(res => this.startup = res);
+    });
+  }
 
   save(){
+    if (!this.startupForm.valid) return false;
+    this.hasPressedSave = true;
+    
+    if(this.isUpdating){
+      this.update();
+    }else{
+      this.create();
+    }
+  }
+
+  create(){
     this.facade.postStartup(this.startup)
       .subscribe(() => {
         this._router.navigateByUrl('/startup');
       });
-  }
+    }
+
+  update(){
+    this.facade.putStartup(this.startup)
+      .subscribe(() => {
+        this._router.navigateByUrl('/startup');
+      });
+    }
+  
 
 }

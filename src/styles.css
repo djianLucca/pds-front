@@ -2,10 +2,23 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 :root{
-    --first-color: #1F4E5F;
-    --second-color: #79A8A9;
-    --third-color: #AACFD0;
-    --forth-color: #F4F7F7;
+    --main-color:           #3498db;
+    --second-color:         #2980b9;
+
+    --market-color:         #2ecc71;
+    --people-color:         #f39c12;
+    --finances-color:       #c0392b;
+    --inovation-color:      #3498db;
+    --management-color:     #34495e;
+    --complementary-color:  #8e44ad;
+}
+
+.primary-color {
+    background-color: var(--main-color) !important;
+}
+
+.secondary-color {
+    background-color: var(--second-color) !important;
 }
 
 /* Remove use terms from map*/
@@ -34,4 +47,32 @@
           -ms-user-select: none; /* Internet Explorer/Edge */
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome and Opera */
+}
+
+.mat-form-field-infix{
+    width: auto !important;
+}
+
+.flat-card{
+    border-radius: 2px;
+    padding: 25px;
+    margin-top: 10px !important;
+    position: relative;
+}
+
+.header-bg {
+    position: absolute;
+    background-color: var(--main-color);
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+}
+
+.header-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }

@@ -1,11 +1,10 @@
-<div class="container">
+<div class="container flat-card z-depth-2">
+  <div class="header-bg"></div>
   <div class="header-content">
-    <h5>Startups</h5>
-    <button class="btn-floating indigo" routerLink="form">
-      <i class="material-icons white-text">add</i>
-    </button>
-</div>
-  <mat-table [dataSource]="startups">
+    <h5 class="white-text">Startups</h5>
+    <button mat-raised-button routerLink="form" class="white-text secondary-color">+ CADASTRAR</button>
+  </div>
+  <mat-table [dataSource]="startups" style="margin-top: 25px;">
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
@@ -28,7 +27,7 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
       <mat-cell *matCellDef="let startup"> 
-          <i class="material-icons clickable">editar</i>
+          <i class="material-icons clickable">edit</i>
           <i class="material-icons clickable" (click)="deleteStartup(startup.id)">delete</i>
       </mat-cell>
     </ng-container>

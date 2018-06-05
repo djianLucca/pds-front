@@ -1,19 +1,22 @@
-<div class="container">
+<div class="container flat-card z-depth-2">
+  <div class="header-bg"></div>
   <div class="header-content">
-    <h5>Cadastrar Startup</h5>
+    <h5 class="white-text">Cadastrar Startup</h5>
   </div>
  
-  <form [formGroup]="startupForm" (ngSubmit)="save()" class="col s12">
+  <form [formGroup]="startupForm" (ngSubmit)="save()" class="col s12" style="margin-top: 25px;">
     <div class="row">
-      <div class="input-field col s12 m6 l4">
+      <div class="input-field col s12 m6">
         <input id="startup-name" type="text" formControlName="startupName" [(ngModel)]="startup.name">
         <label for="startup-name">Nome da Startup</label>
       </div>
-      <div class="input-field col s12 m6 l4">
+      <div class="input-field col s12 m6">
         <input id="startup-person" type="text" formControlName="startupPerson" [(ngModel)]="startup.person.name">
         <label for="startup-person">Responsável pela Startup</label>
       </div>
-      <div class="col s12 m6 l4">
+    </div>
+    <div class="row">
+      <div class="col s12 m6">
         <mat-form-field>
           <mat-select placeholder="Área de atuação" formControlName="areaId" [(ngModel)]="startup.areaId">
             <mat-option value="option" disabled>Selecione uma Área</mat-option>
@@ -21,10 +24,9 @@
           </mat-select>
         </mat-form-field>
       </div>
-    </div>
-    <div class="row">
-      <div class="col s12">
-        <button type="submit" class="btn right">CADASTRAR</button>
+      <div class="col s12 m4 offset-m2">
+          <button mat-raised-button routerLink="/startup" class="grey white-text">CANCELAR</button>
+        <button mat-raised-button type="submit" class="white-text secondary-color" [class.disabled]="hasPressedSave">CADASTRAR</button>
       </div>
     </div>
   </form>
