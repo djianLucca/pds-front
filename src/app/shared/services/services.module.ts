@@ -1,3 +1,5 @@
+import { PhaseService } from './phase.service';
+import { DimensionService } from './dimension.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -7,6 +9,8 @@ import { StartupService } from './startup.service';
 import { BaseService } from './base.service';
 import { AreaService } from './area.service';
 import { ModelService } from './model.service';
+import { ActivityService } from './activity.service';
+import { ActivityTypeService } from './activity-type.service';
 
 @NgModule({
   imports: [
@@ -16,10 +20,14 @@ import { ModelService } from './model.service';
   providers: [
     FacadeService,
 
-    BaseService,
-    StartupService,
+    ActivityService,
+    ActivityTypeService,
     AreaService,
-    ModelService
+    BaseService,
+    DimensionService,
+    ModelService,
+    PhaseService,
+    StartupService
   ]
 })
 export class ServicesModule { }

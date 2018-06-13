@@ -1,7 +1,6 @@
 .sidenav {
     padding-top: 65px;
-    z-index: -1;
-    border-right: 1px solid rgba(0,0,0,0.14);
+    z-index: 1;
 }
 .sidenav-header{
     display: flex;
@@ -13,7 +12,7 @@
 }
 .sidenav-header-content{
     display: flex;
-    flex-direction: column;
+    flex-flow: column wrap;
 }
 .sidenav-header-logout{
 

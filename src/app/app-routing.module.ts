@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'model',
     loadChildren: 'app/modules/model/model.module#ModelModule',
     canActivate: [AuthGuard]
+  },{
+    path: 'activity',
+    loadChildren: 'app/modules/activity/activity.module#ActivityModule',
+    canActivate: [AuthGuard]
   }
 ];
 

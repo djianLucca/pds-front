@@ -12,12 +12,19 @@ export class SidenavComponent implements OnInit {
   
   @Input() pct: IPct;
 
+  is_admin = false;
+
   constructor(
     private _authService: AuthService,
     private _router: Router
   ) { }
 
   ngOnInit() {
+    this.setIsAdmin();
+  }
+
+  setIsAdmin(){
+    this.is_admin = this._authService.is_admin;
   }
 
   logout(){

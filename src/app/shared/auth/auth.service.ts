@@ -44,4 +44,8 @@ export class AuthService {
 
     return false;
   }
+
+  public get is_admin() {
+    return this.tokenDecoded.user.is_admin;
+  }
 }

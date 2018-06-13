@@ -1,4 +1,14 @@
 <app-sidenav [pct]="activePct"></app-sidenav>
 <div class="main">
-
+    <div class="flat-card">
+        <mat-horizontal-stepper [linear]="true" #stepper>
+            <mat-step *ngFor="let startup of startups" [completed]="true" [label]="startup.name">
+                <app-startup-dashboard [startupId]="startup.id"></app-startup-dashboard>
+                <div>
+                    <button *ngIf="!isFirst(startup, startups)" mat-button matStepperPrevious>Back</button>
+                    <button *ngIf="!isLast(startup, startups)" mat-button matStepperNext>Next</button>
+                </div>
+            </mat-step>
+            </mat-horizontal-stepper>
+    </div>
 </div>

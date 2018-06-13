@@ -21,6 +21,14 @@
     background-color: var(--second-color) !important;
 }
 
+.primary-color-text {
+    color: var(--main-color) !important;
+}
+
+.secondary-color-text {
+    color: var(--second-color) !important;
+}
+
 /* Remove use terms from map*/
 .gmnoprint {
     display: none;

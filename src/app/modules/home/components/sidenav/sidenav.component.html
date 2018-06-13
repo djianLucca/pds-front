@@ -2,13 +2,15 @@
   <div class="sidenav-header">
     <div class="sidenav-header-content">
       <h4>{{pct?.name}}</h4>
-      <h6>{{pct?.user?.person?.name}} | <span class="grey-text email">{{pct?.user?.email}}</span></h6>
+      <h6>{{pct?.user?.person?.name}}</h6>
+      <h6>| <span class="grey-text email">{{pct?.user?.email}}</span></h6>
     </div>
     <i class="clickable small material-icons" (click)="logout()" >power_settings_new</i>
   </div>
   <li>
     <a routerLink="/startup">Startups</a>
     <a routerLink="/model">Modelos</a>
+    <a *ngIf="is_admin" routerLink="/activity">Atividades</a>
     <a class="grey-text">Relatórios</a>
   </li>
 </ul>

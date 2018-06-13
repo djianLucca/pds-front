@@ -5,4 +5,5 @@ export interface IUser {
     email?: string;
     person?: IPerson;
     personId?: string;
+    is_admin?: boolean;
 }
