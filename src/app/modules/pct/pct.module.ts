@@ -5,7 +5,7 @@ import { PctRoutingModule } from './pct-routing.module';
 import { PctListComponent } from './pages/pct-list/pct-list.component';
 import { PctFormComponent } from './pages/pct-form/pct-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule, MatTableModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -13,6 +13,9 @@ import { MatButtonModule } from '@angular/material';
     PctRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatSelectModule,
     MatButtonModule
   ],
   declarations: [PctListComponent, PctFormComponent]

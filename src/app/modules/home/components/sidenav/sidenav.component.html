@@ -16,6 +16,6 @@
     <a class="grey-text">Relatórios</a>
     <div class="divider"></div>
     <a *ngIf="is_admin" routerLink="/activities">Atividades</a>
-    <a *ngIf="is_admin" (click)="redirectToPctForm()">Pcts</a>
+    <a *ngIf="is_admin" routerLink="/pcts">Pcts</a>
   </li>
 </ul>
