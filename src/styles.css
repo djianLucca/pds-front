@@ -4,13 +4,31 @@
 :root{
     --main-color:           #3498db;
     --second-color:         #2980b9;
+}
 
-    --market-color:         #2ecc71;
-    --people-color:         #f39c12;
-    --finances-color:       #c0392b;
-    --inovation-color:      #3498db;
-    --management-color:     #34495e;
-    --complementary-color:  #8e44ad;
+.M-color{
+    color:#8ac752;
+    font-weight: bold;
+}
+.P-color{
+    color:#fd9439;
+    font-weight: bold;
+}
+.F-color{
+    color:#c83f4a;
+    font-weight: bold;
+}
+.I-color{
+    color:#3daac7;
+    font-weight: bold;
+}
+.G-color{
+    color:#2d3f7e;
+    font-weight: bold;
+}
+.C-color{
+    color:#8950a3;
+    font-weight: bold;
 }
 
 .primary-color {

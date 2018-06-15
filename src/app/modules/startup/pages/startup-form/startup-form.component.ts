@@ -72,16 +72,14 @@ export class StartupFormComponent implements OnInit {
   create(){
     this.facade.postStartup(this.startup)
       .subscribe(() => {
-        this._router.navigateByUrl('/startup');
+        this._router.navigateByUrl('/startups');
       });
-    }
+  }
 
   update(){
     this.facade.putStartup(this.startup)
       .subscribe(() => {
-        this._router.navigateByUrl('/startup');
+        this._router.navigateByUrl('/startups');
       });
-    }
-  
-
+  }
 }

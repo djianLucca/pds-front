@@ -14,8 +14,11 @@
     display: flex;
     flex-flow: column wrap;
 }
-.sidenav-header-logout{
-
+.sidenav-icons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    height: 90px;
 }
 .email{
     font-style: italic;

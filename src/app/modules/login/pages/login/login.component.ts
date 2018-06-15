@@ -1,7 +1,8 @@
+import { FacadeService } from './../../../../shared/services/facade.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ISubscription, Subscription } from 'rxjs/Subscription';
+// import { ISubscription, Subscription } from 'rxjs/Subscription';
 
 import { ILogin } from './../../../../interfaces/login';
 import { AuthService } from './../../../../shared/auth/auth.service';
@@ -14,8 +15,6 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  //Settings
-  subscription: ISubscription;
 
   formLogin: FormGroup;
   formSignUp: FormGroup;
@@ -28,18 +27,15 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _auth: AuthService,
+    private facade: FacadeService,
     private _formBuilder: FormBuilder,
     private _router: Router,
     private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
-    this.clearToken();
     this.initForms();
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.clearToken();
   }
 
   openSnackBar(message) {
@@ -73,29 +69,25 @@ export class LoginComponent implements OnInit {
 
 
   login() {
-    if (!this.formLogin.valid) return false;
-
-    const subs = this._auth.login(this.loginData)
+    this._auth.login({email: "djian@user.com",password: "password"})
       .subscribe(res => {
-        if (!res.token) return;
-
         this._auth.token = res.token;
         this._router.navigate(['/']);
       });
-    this.subscription = subs;
+
+
   }
 
   signUp() {
-    if (!this.formSignUp.valid) {
-      console.log('ERRO');
-      return false;
-    }
-
-    const subs = this._auth.signup(this.signUpData)
+    this.facade.postPct(this.signUpData)
       .subscribe(res => {
         this.openSnackBar('Conta criada com sucesso');
         this.isLoginFormOn = true;
-      })
-    this.subscription = subs;
+      });
+
+  }
+
+  changeForm(){
+    this.isLoginFormOn = !this.isLoginFormOn;
   }
 }

@@ -17,7 +17,9 @@ export class ActivityComponent implements OnInit {
   activitiesTypes: IActivityType[] = [];
   activities: IActivity[] = [];
 
+  currentPhase = '';
   activityToAdd: IActivity = {};
+
 
   constructor(private facade: FacadeService) { }
 
@@ -25,13 +27,10 @@ export class ActivityComponent implements OnInit {
     this.setAllLists();
   }
 
-
-
   setAllLists(){
     this.setPhases();
     this.setDimensions();
     this.setAcitivitiesTypes();
-    this.setActivities();
   }
 
   setPhases(){
@@ -49,16 +48,28 @@ export class ActivityComponent implements OnInit {
       .subscribe(res => this.activitiesTypes = res);
   }
 
+  setCurrentPhase(phaseId){
+    this.currentPhase = phaseId;
+    this.setActivities()
+  }
+
   setActivities(){
-    this.facade.getActivities()
+    this.activities = [];
+    this.facade.getActivitiesByPhase(this.currentPhase)
       .subscribe(res => this.activities = res);
   }
 
   addActivity(){
+    this.activityToAdd.phaseId = this.currentPhase;
     this.facade.postActivity(this.activityToAdd)
     .subscribe(res => {
       this.activityToAdd = {};
       this.setActivities();
     });
+  }
+
+  removeActivity(activityId){
+    this.facade.deleteActivity(activityId)
+      .subscribe(res => this.setActivities())
   }
 }

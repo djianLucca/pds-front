@@ -1,12 +1,15 @@
-import { ActivityService } from './activity.service';
-import { PhaseService } from './phase.service';
-import { DimensionService } from './dimension.service';
-import { ActivityTypeService } from './activity-type.service';
-import { AuthService } from './../auth/auth.service';
-import { StartupService } from './startup.service';
 import { Injectable, Injector } from '@angular/core';
+
+import { AuthService } from './../auth/auth.service';
+
+import { ActivityService } from './activity.service';
+import { ActivityTypeService } from './activity-type.service';
 import { AreaService } from './area.service';
+import { DimensionService } from './dimension.service';
 import { ModelService } from './model.service';
+import { PctService } from './pct.service';
+import { PhaseService } from './phase.service';
+import { StartupService } from './startup.service';
 
 @Injectable()
 export class FacadeService {
@@ -51,6 +54,14 @@ export class FacadeService {
     return this._modelService;
   }
   
+  private _pctService: PctService;
+  private get pctService(): PctService {
+    if(!this._pctService){
+      this._pctService = this.injector.get(PctService);
+    }
+    return this._pctService;
+  }
+  
   private _phaseService: PhaseService;
   private get phaseService(): PhaseService {
     if(!this._phaseService){
@@ -71,7 +82,9 @@ export class FacadeService {
 
   // Activity Service
   getActivities(){return this.activityService.get()}
+  getActivitiesByPhase(phaseId){return this.activityService.getByPhase(phaseId)}
   postActivity(activity){return this.activityService.post(activity)}
+  deleteActivity(activity){return this.activityService.delete(activity)}
 
   // Activity Type Service
   getActivitiesTypes(){return this.activityTypeService.get()}
@@ -85,7 +98,14 @@ export class FacadeService {
   // Model Service
   getModels(){return this.modelService.get()}
 
-  // Model Service
+  // Pct Service
+  getPcts(){return this.pctService.get()}
+  getPctsById(id){return this.pctService.getById(id)}
+  postPct(pct){return this.pctService.post(pct)}
+  putPct(pct){return this.pctService.put(pct)}
+  deletePct(id){return this.pctService.delete(id)}
+
+  // Phase Service
   getPhases(){return this.phaseService.get()}
 
   // Startup Service

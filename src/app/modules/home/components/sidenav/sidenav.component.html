@@ -5,12 +5,17 @@
       <h6>{{pct?.user?.person?.name}}</h6>
       <h6>| <span class="grey-text email">{{pct?.user?.email}}</span></h6>
     </div>
-    <i class="clickable small material-icons" (click)="logout()" >power_settings_new</i>
+    <div class="sidenav-icons">
+      <i class="clickable small material-icons" (click)="logout()" >power_settings_new</i>
+      <i class="clickable small material-icons" (click)="redirectToPctForm()" >settings</i>
+    </div>
   </div>
   <li>
-    <a routerLink="/startup">Startups</a>
-    <a routerLink="/model">Modelos</a>
-    <a *ngIf="is_admin" routerLink="/activity">Atividades</a>
+    <a routerLink="/startups">Startups</a>
+    <a routerLink="/models">Modelos</a>
     <a class="grey-text">Relatórios</a>
+    <div class="divider"></div>
+    <a *ngIf="is_admin" routerLink="/activities">Atividades</a>
+    <a *ngIf="is_admin" (click)="redirectToPctForm()">Pcts</a>
   </li>
 </ul>

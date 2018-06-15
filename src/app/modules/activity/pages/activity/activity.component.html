@@ -3,55 +3,56 @@
   <div class="header-content">
     <h5 class="white-text">Modelos</h5>
   </div>
-  <table style="margin-top: 25px;">
-    <thead>
-      <tr>
-        <th>Fase</th>
-        <th>Dimensão</th>
-        <th>Tipo</th>
-        <th>Descrição</th>
-        <th>Ação</th>
-      </tr>
-    </thead>
-    <tbody style="font-size: 12px">
-      <tr *ngFor="let activity of activities">
-        <td>{{activity?.phase?.name}}</td>
-        <td>{{activity?.dimension?.name}}</td>
-        <td>{{activity?.activity_type?.initials}}</td>
-        <td>{{activity?.description}}</td>
-        <td><i class="material-icons">edit</i></td>
-      </tr>
-      <tr>
-        <td>
-          <mat-select style="min-width: 60px;" [(ngModel)]="activityToAdd.phaseId" placeholder="Fase">
-            <mat-option *ngFor="let phase of phases" [value]="phase.id">
-              {{ phase.name }}
-            </mat-option>
-          </mat-select>
-        </td>
-        <td>
-          <mat-select style="min-width: 90px;" [(ngModel)]="activityToAdd.dimensionId" placeholder="Dimensão">
-            <mat-option *ngFor="let dimension of dimensions" [value]="dimension.id">
-              {{ dimension.name }}
-            </mat-option>
-          </mat-select>
-        </td>
-        <td>
-          <mat-select style="min-width: 40px;" [(ngModel)]="activityToAdd.activityTypeId" placeholder="Tipo">
-            <mat-option *ngFor="let activitiesType of activitiesTypes" [value]="activitiesType.id">
-              {{ activitiesType.initials }}
-            </mat-option>
-          </mat-select>
-        </td>
-        <td>
-            <input style="font-size: 12px" [(ngModel)]="activityToAdd.description" matInput placeholder="Descrição">
-        </td>
-        <td>
-          <button mat-mini-fab (click)="addActivity()" class="white-text secondary-color"><mat-icon>add</mat-icon></button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+
+  <br>
+
+  <mat-tab-group (selectedTabChange)="setCurrentPhase($event.tab.textLabel)">
+    <mat-tab *ngFor="let phase of phases" [label]="phase.id">
+      <ng-template mat-tab-label>
+        {{phase.name}}
+      </ng-template>
+      <table>
+        <thead>
+          <tr style="font-size: 12px">
+            <td>
+              <mat-select style="min-width: 100px;" [(ngModel)]="activityToAdd.dimensionId" placeholder="Dimensão">
+                <mat-option *ngFor="let dimension of dimensions" [value]="dimension.id">
+                  {{ dimension.name }}
+                </mat-option>
+              </mat-select>
+            </td>
+            <td>
+              <mat-select style="min-width: 45px;" [(ngModel)]="activityToAdd.activityTypeId" placeholder="Tipo">
+                <mat-option *ngFor="let activitiesType of activitiesTypes" [value]="activitiesType.id">
+                  {{ activitiesType.initials }}
+                </mat-option>
+              </mat-select>
+            </td>
+            <td>
+                <input style="font-size: 12px" [(ngModel)]="activityToAdd.description" matInput placeholder="Descrição">
+            </td>
+            <td>
+              <button mat-mini-fab (click)="addActivity()" class="white-text secondary-color"><mat-icon>add</mat-icon></button>
+            </td>
+          </tr>
+          <tr>
+            <th>Dimensão</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody style="font-size: 12px">
+          <tr *ngFor="let activity of activities">
+            <td class="{{activity.dimension.name[0] + '-color'}}">{{activity?.dimension?.name}}</td>
+            <td>{{activity?.activity_type?.initials}}</td>
+            <td>{{activity?.description}}</td>
+            <td><i class="material-icons clickable" (click)="removeActivity(activity.id)">delete</i></td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-tab>
+  </mat-tab-group>
 </div>
 
   

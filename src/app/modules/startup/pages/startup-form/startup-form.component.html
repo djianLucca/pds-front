@@ -4,7 +4,9 @@
     <h5 class="white-text">Cadastrar Startup</h5>
   </div>
  
-  <form [formGroup]="startupForm" (ngSubmit)="save()" class="col s12" style="margin-top: 25px;">
+  <br>
+
+  <form [formGroup]="startupForm" (ngSubmit)="save()" class="col s12">
     <div class="row">
       <div class="input-field col s12 m6">
         <input id="startup-name" type="text" formControlName="startupName" [(ngModel)]="startup.name">

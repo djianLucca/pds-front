@@ -8,19 +8,23 @@ const routes: Routes = [
     loadChildren: 'app/modules/home/home.module#HomeModule',
     canActivate: [AuthGuard]
   },{
+    path: 'activities',
+    loadChildren: 'app/modules/activity/activity.module#ActivityModule',
+    canActivate: [AuthGuard]
+  },{
     path: 'login',
     loadChildren: 'app/modules/login/login.module#LoginModule'
   },{
-    path: 'startup',
-    loadChildren: 'app/modules/startup/startup.module#StartupModule',
-    canActivate: [AuthGuard]
-  },{
-    path: 'model',
+    path: 'models',
     loadChildren: 'app/modules/model/model.module#ModelModule',
     canActivate: [AuthGuard]
   },{
-    path: 'activity',
-    loadChildren: 'app/modules/activity/activity.module#ActivityModule',
+    path: 'pcts',
+    loadChildren: 'app/modules/pct/pct.module#PctModule',
+    canActivate: [AuthGuard]
+  },{
+    path: 'startups',
+    loadChildren: 'app/modules/startup/startup.module#StartupModule',
     canActivate: [AuthGuard]
   }
 ];

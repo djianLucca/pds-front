@@ -1,3 +1,4 @@
+import { LoginModule } from './modules/login/login.module';
 import { AuthService } from './shared/auth/auth.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -31,7 +32,8 @@ import { FormBuilder } from '@angular/forms';
     AuthModule,
     HttpClientModule,
     NavbarModule,
-    ServicesModule
+    ServicesModule,
+    LoginModule
   ],
   providers: [
     AuthService,

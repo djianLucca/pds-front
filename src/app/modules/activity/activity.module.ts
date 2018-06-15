@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ActivityRoutingModule } from './activity-routing.module';
 import { ActivityComponent } from './pages/activity/activity.component';
 
-import { MatInputModule, MatSelectModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { MatInputModule, MatSelectModule, MatIconModule, MatButtonModule, MatTabsModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -15,6 +15,7 @@ import { MatInputModule, MatSelectModule, MatIconModule, MatButtonModule } from 
     MatSelectModule,
     MatIconModule,
     MatButtonModule,
+    MatTabsModule,
     FormsModule
   ],
   declarations: [ActivityComponent]

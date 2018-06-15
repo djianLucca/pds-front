@@ -32,4 +32,8 @@ export class SidenavComponent implements OnInit {
     this._router.navigateByUrl('/login');
   }
 
+  redirectToPctForm(){
+    this._router.navigate(['/pcts/form'], {queryParams: {"id": this.pct.id}});
+  }
+
 }

@@ -17,6 +17,11 @@ export class ActivityService {
     return this.baseService.getById(this.url, id);
   }
 
+  getByPhase(phaseId){
+    let params = 'phase/' + phaseId;
+    return this.baseService.getWithParams(this.url, params);
+  }
+
   post(activity: IActivity){
     return this.baseService.post(this.url, activity);
   }
