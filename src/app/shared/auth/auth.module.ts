@@ -11,7 +11,7 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
   constructor(private _authService: AuthService){}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = this._authService.token;
+    const token = this._authService.token || '';
     const newRequest = req.clone({
     headers: req.headers.set('x-access-token', token),
   });
