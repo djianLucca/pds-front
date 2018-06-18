@@ -152,3 +152,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .mat-button-toggle{
     background-color: var(--second-color);
 }
+.mat-dialog-container{
+    max-height: 90vh;
+}

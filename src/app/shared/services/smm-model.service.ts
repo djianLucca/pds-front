@@ -14,9 +14,9 @@ export class SmmModelService {
     return this.baseService.get(this.url);
   }
 
-  getByPct(){
-    let url = this.url + '/pct';
-    return this.baseService.get(url);
+  getByPct(pctId){
+    let params = '/pct/' + pctId;
+    return this.baseService.getWithParams(this.url, params);
   }
 
   getActivities(smmModelId){
