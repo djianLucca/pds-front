@@ -6,7 +6,7 @@ import { ActivityService } from './activity.service';
 import { ActivityTypeService } from './activity-type.service';
 import { AreaService } from './area.service';
 import { DimensionService } from './dimension.service';
-import { ModelService } from './model.service';
+import { SmmModelService } from './smm-model.service';
 import { PctService } from './pct.service';
 import { PhaseService } from './phase.service';
 import { StartupService } from './startup.service';
@@ -46,12 +46,12 @@ export class FacadeService {
     return this._dimensionSevice;
   }
   
-  private _modelService: ModelService;
-  private get modelService(): ModelService {
-    if(!this._modelService){
-      this._modelService = this.injector.get(ModelService);
+  private _smmModelService: SmmModelService;
+  private get smmModelService(): SmmModelService {
+    if(!this._smmModelService){
+      this._smmModelService = this.injector.get(SmmModelService);
     }
-    return this._modelService;
+    return this._smmModelService;
   }
   
   private _pctService: PctService;
@@ -96,7 +96,10 @@ export class FacadeService {
   getDimensions(){return this.dimensionSevice.get()}
 
   // Model Service
-  getModels(){return this.modelService.get()}
+  getSmmModels(){return this.smmModelService.get()}
+  getSmmModelsByPct(){return this.smmModelService.getByPct()}
+  getSmmModelActivities(smmModelId){return this.smmModelService.getActivities(smmModelId)}
+  postSmmModel(model){return this.smmModelService.post(model)}
 
   // Pct Service
   getPcts(){return this.pctService.get()}

@@ -1,0 +1,45 @@
+<div class="container flat-card z-depth-2">
+  <div class="header-bg"></div>
+  <div class="header-content">
+    <h5 class="white-text">Cadastrar Modelo</h5>
+  </div>
+  
+  <br><br>
+
+  <form [formGroup]="smmModelForm" (ngSubmit)="save()" class="col s12">
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <input id="smmModelName" type="text" formControlName="smmModelName" [(ngModel)]="smmModel.name">
+        <label  class="active" for="smmModelName">Nome do Modelo</label>
+      </div>
+      <div class="input-field col s12 m6">
+        <mat-form-field>
+          <mat-select placeholder="Modelo Base" formControlName="smmModelBase" [(ngModel)]="smmModelBase" (selectionChange)="setActivitiesFromApi($event.value)">
+            <mat-option value="option" disabled>Baseado em</mat-option>
+            <mat-option value="0">Nenhum</mat-option>
+            <mat-option *ngFor="let smmModel of smmModels" [value]="smmModel.id">{{smmModel.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    
+    <app-activity-list
+      *ngIf="phases && dimensions && activitiesTypes && activities"
+      [phases]="phases"
+      [dimensions]="dimensions"
+      [activitiesTypes]="activitiesTypes"
+      [activities]="activities"
+      [isViewMode]="false"
+      (phaseChange)="setCurrentPhase($event.phaseId)"
+      (addActivity)="addActivity($event.activity)"
+      (removeActivity)="removeActivity($event.activityId)"
+    ></app-activity-list>
+
+    <div class="row">
+      <div class="col s12">
+        <button mat-raised-button routerLink="/smmModel" class="grey white-text">CANCELAR</button>
+        <button mat-raised-button type="submit" class="white-text secondary-color" [class.disabled]="hasPressedSave">CADASTRAR</button>
+      </div>
+    </div>
+  </form>
+</div>

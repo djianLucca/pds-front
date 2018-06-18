@@ -2,8 +2,8 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 :root{
-    --main-color:           #3498db;
-    --second-color:         #2980b9;
+    --main-color: #399ada;
+    --second-color: #186396;
 }
 
 .M-color{
@@ -83,6 +83,7 @@
     border-radius: 2px;
     padding: 25px;
     margin-top: 10px !important;
+    margin-bottom: 50px !important;
     position: relative;
 }
 
@@ -101,4 +102,53 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+}
+.table-placeholder{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+input:not([type]):focus:not([readonly])+label,
+input[type=text]:not(.browser-default):focus:not([readonly])+label,
+input[type=password]:not(.browser-default):focus:not([readonly])+label,
+input[type=email]:not(.browser-default):focus:not([readonly])+label,
+input[type=url]:not(.browser-default):focus:not([readonly])+label,
+input[type=time]:not(.browser-default):focus:not([readonly])+label,
+input[type=date]:not(.browser-default):focus:not([readonly])+label,
+input[type=datetime]:not(.browser-default):focus:not([readonly])+label,
+input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label,
+input[type=tel]:not(.browser-default):focus:not([readonly])+label,
+input[type=number]:not(.browser-default):focus:not([readonly])+label,
+input[type=search]:not(.browser-default):focus:not([readonly])+label,
+textarea.materialize-textarea:focus:not([readonly])+label,
+.input-field .prefix.active {
+    color: var(--second-color) !important;
+}
+
+input:not([type]):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=url]:not(.browser-default):focus:not([readonly]),
+input[type=time]:not(.browser-default):focus:not([readonly]),
+input[type=date]:not(.browser-default):focus:not([readonly]),
+input[type=datetime]:not(.browser-default):focus:not([readonly]),
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+input[type=tel]:not(.browser-default):focus:not([readonly]),
+input[type=number]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid var(--second-color)  !important;
+    box-shadow: 0 1px 0 0 var(--second-color) !important;
+}
+
+.mat-button-toggle-label-content{
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+}
+.mat-button-toggle{
+    background-color: var(--second-color);
 }

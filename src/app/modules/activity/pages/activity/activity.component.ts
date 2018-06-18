@@ -18,7 +18,6 @@ export class ActivityComponent implements OnInit {
   activities: IActivity[] = [];
 
   currentPhase = '';
-  activityToAdd: IActivity = {};
 
 
   constructor(private facade: FacadeService) { }
@@ -50,26 +49,22 @@ export class ActivityComponent implements OnInit {
 
   setCurrentPhase(phaseId){
     this.currentPhase = phaseId;
-    this.setActivities()
+    this.setActivities(phaseId);
   }
 
-  setActivities(){
+  setActivities(phaseId){
     this.activities = [];
-    this.facade.getActivitiesByPhase(this.currentPhase)
+    this.facade.getActivitiesByPhase(phaseId)
       .subscribe(res => this.activities = res);
   }
 
-  addActivity(){
-    this.activityToAdd.phaseId = this.currentPhase;
-    this.facade.postActivity(this.activityToAdd)
-    .subscribe(res => {
-      this.activityToAdd = {};
-      this.setActivities();
-    });
+  addActivity(activity: IActivity){
+    this.facade.postActivity(activity)
+    .subscribe(res => this.setActivities(activity.phaseId));
   }
 
   removeActivity(activityId){
     this.facade.deleteActivity(activityId)
-      .subscribe(res => this.setActivities())
+      .subscribe(res => this.setActivities(this.currentPhase));
   }
 }

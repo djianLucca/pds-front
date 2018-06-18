@@ -1,3 +1,4 @@
+import { ActivityListModule } from './../../shared/components/activity-list/activity-list.module';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -16,7 +17,8 @@ import { MatInputModule, MatSelectModule, MatIconModule, MatButtonModule, MatTab
     MatIconModule,
     MatButtonModule,
     MatTabsModule,
-    FormsModule
+    FormsModule,
+    ActivityListModule
   ],
   declarations: [ActivityComponent]
 })

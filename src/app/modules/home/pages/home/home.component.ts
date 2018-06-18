@@ -1,3 +1,4 @@
+import { FacadeService } from './../../../../shared/services/facade.service';
 import { IPct } from './../../../../interfaces/pct';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../shared/auth/auth.service';
@@ -13,7 +14,10 @@ export class HomeComponent implements OnInit {
   activePct: IPct = {};
   startups: IStartup[] = [];
 
-  constructor(private _auth: AuthService) { }
+  constructor(
+    private _auth: AuthService,
+    private facade: FacadeService
+  ) { }
 
   ngOnInit() {
    this.setActivePct();
@@ -21,14 +25,8 @@ export class HomeComponent implements OnInit {
   }
 
   setStartups(){
-    this.startups = [
-      {id: '1', name: 'Startup 1'},
-      {id: '2', name: 'Startup 2'},
-      {id: '3', name: 'Startup 3'},
-      {id: '4', name: 'Startup 4'},
-      {id: '5', name: 'Startup 5'},
-      {id: '6', name: 'Startup 6'},
-    ]
+    this.facade.getStartups()
+      .subscribe(res => this.startups = res);
   }
 
   isFirst(element, array){

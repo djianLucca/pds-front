@@ -94,7 +94,6 @@ export class LoginComponent implements OnInit {
 
   signUp() {
     if (!this.formSignUp.valid) {
-      console.log('ERRO');
       return false;
     }
 

@@ -2,40 +2,50 @@
   <div class="header-bg"></div>
   <div class="header-content">
     <h5 class="white-text">Modelos</h5>
-    <button mat-raised-button routerLink="form" class="white-text secondary-color">+ CADASTRAR</button>
+    <div>
+      <mat-button-toggle-group (change)="toggleChange()" name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle checked="true" value="mine">
+            <i class="material-icons">person</i>
+          </mat-button-toggle>
+          <mat-button-toggle value="all">
+            <i class="material-icons">explore</i>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      <button mat-raised-button routerLink="form" class="white-text secondary-color">+ CADASTRAR</button>
+    </div>
   </div>
 
-  <br>
+  <br><br>
 
-  <mat-table [dataSource]="models">
+  <mat-table [dataSource]="smmModels">
     <!-- Rank Column -->
     <ng-container matColumnDef="rank">
       <mat-header-cell *matHeaderCellDef> Rank </mat-header-cell>
-      <mat-cell *matCellDef="let model"><span class="grey-text text-darken-2">{{'#' + model.rank}}</span></mat-cell>
+      <mat-cell *matCellDef="let smmModel"><span class="grey-text text-darken-2">{{'#' + smmModel.rank}}</span></mat-cell>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef style="flex: 2"> Nome </mat-header-cell>
-      <mat-cell *matCellDef="let model" style="flex: 2"> {{model.name}} </mat-cell>
+      <mat-cell *matCellDef="let smmModel" style="flex: 2"> {{smmModel.name}} </mat-cell>
     </ng-container>
     
     <!-- Pct Column -->
     <ng-container matColumnDef="creator">
       <mat-header-cell *matHeaderCellDef> Criador </mat-header-cell>
-      <mat-cell *matCellDef="let model"> {{model.pct}} </mat-cell>
+      <mat-cell *matCellDef="let smmModel"> {{smmModel.pct}} </mat-cell>
     </ng-container>
     
     <!-- Times Used Column -->
     <ng-container matColumnDef="usages">
       <mat-header-cell *matHeaderCellDef> Usos </mat-header-cell>
-      <mat-cell *matCellDef="let model"> {{model.usages}} </mat-cell>
+      <mat-cell *matCellDef="let smmModel"> {{smmModel.usages}} </mat-cell>
     </ng-container>
 
     <!-- Actions Column -->
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
-      <mat-cell *matCellDef="let model"> 
+      <mat-cell *matCellDef="let smmModel"> 
           <i class="material-icons clickable">visibility</i>
           <i class="material-icons clickable">edit</i>
       </mat-cell>

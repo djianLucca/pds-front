@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: 'app/modules/login/login.module#LoginModule'
   },{
     path: 'models',
-    loadChildren: 'app/modules/model/model.module#ModelModule',
+    loadChildren: 'app/modules/smm-model/smm-model.module#SmmModelModule',
     canActivate: [AuthGuard]
   },{
     path: 'pcts',

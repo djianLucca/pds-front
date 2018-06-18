@@ -24,8 +24,8 @@ export class PctListComponent implements OnInit {
       .subscribe( response => this.pcts = new MatTableDataSource(response));
   }
 
-  deleteStartup(id){
-    this.facade.deleteStartup(id)
+  deletePct(id){
+    this.facade.deletePct(id)
       .subscribe(() => this.getPcts());
   }
 

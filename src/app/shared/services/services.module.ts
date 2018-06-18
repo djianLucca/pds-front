@@ -9,7 +9,7 @@ import { ActivityTypeService } from './activity-type.service';
 import { AreaService } from './area.service';
 import { BaseService } from './base.service';
 import { DimensionService } from './dimension.service';
-import { ModelService } from './model.service';
+import { SmmModelService } from './smm-model.service';
 import { PctService } from './pct.service';
 import { PhaseService } from './phase.service';
 import { StartupService } from './startup.service';
@@ -27,7 +27,7 @@ import { StartupService } from './startup.service';
     AreaService,
     BaseService,
     DimensionService,
-    ModelService,
+    SmmModelService,
     PctService,
     PhaseService,
     StartupService

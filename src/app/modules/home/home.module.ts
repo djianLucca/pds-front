@@ -5,15 +5,14 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { StartupDashboardComponent } from './components/startup-dashboard/startup-dashboard.component';
-import {MatStepperModule} from '@angular/material/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule, MatTabsModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     HomeRoutingModule,
-    MatStepperModule,
+    MatTabsModule,
     MatButtonModule,
     ReactiveFormsModule
   ],
