@@ -10,4 +10,5 @@ export interface IStartup {
     pctId?: string;
     personId?: string;
     areaId?: string;
+    hasModel?: boolean;
 }

@@ -35,7 +35,7 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
       <mat-cell *matCellDef="let startup"> 
-          <i class="material-icons clickable">list</i>
+          <i class="material-icons clickable" (click)="editModel(startup.id)">list</i>
           <i class="material-icons clickable">edit</i>
           <i class="material-icons clickable" (click)="deleteStartup(startup.id)">delete</i>
 

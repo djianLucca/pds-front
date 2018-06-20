@@ -1,0 +1,25 @@
+mat-tab-group{
+    margin-bottom: 30px;
+}
+td {
+    padding: 5px 5px;
+    border-radius: 0px; 
+}
+table * {
+    font-size: 12px
+}
+input[type=date]:not(.browser-default){
+    max-width: 120px;
+}
+.act-td{
+    max-width: 200px;
+}
+input[type=text]:not(.browser-default){
+    min-width: 80px;
+}
+.index-flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; 
+}

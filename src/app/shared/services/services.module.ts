@@ -1,3 +1,4 @@
+import { StartupModelService } from './startup-model.service';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -30,7 +31,8 @@ import { StartupService } from './startup.service';
     SmmModelService,
     PctService,
     PhaseService,
-    StartupService
+    StartupService,
+    StartupModelService
   ]
 })
 export class ServicesModule { }

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { StartupService } from './../../../../shared/services/startup.service';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
@@ -14,7 +15,10 @@ export class StartupListComponent implements OnInit {
   startups: MatTableDataSource<IStartup[]>;
   displayedColumns = ['name', 'area', 'person', 'actions'];
 
-  constructor(private facade: FacadeService) { }
+  constructor(
+    private facade: FacadeService,
+    private _router: Router,
+  ) { }
 
   ngOnInit() {
     this.getStartups();
@@ -28,6 +32,10 @@ export class StartupListComponent implements OnInit {
   deleteStartup(id){
     this.facade.deleteStartup(id)
       .subscribe(() => this.getStartups());
+  }
+
+  editModel(id){
+    this._router.navigate(['/startups/model/'], {queryParams: { id }});
   }
 
 }

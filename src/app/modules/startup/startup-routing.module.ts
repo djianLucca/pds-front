@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { StartupListComponent } from './pages/startup-list/startup-list.component';
 import { StartupFormComponent } from './pages/startup-form/startup-form.component';
+import { StartupModelComponent } from './pages/startup-model/startup-model.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'form',
     component: StartupFormComponent
+  },
+  {
+    path: 'model',
+    component: StartupModelComponent
   }
 ];
 

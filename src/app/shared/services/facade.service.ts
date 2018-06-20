@@ -1,3 +1,4 @@
+import { StartupModelService } from './startup-model.service';
 import { Injectable, Injector } from '@angular/core';
 
 import { AuthService } from './../auth/auth.service';
@@ -46,14 +47,6 @@ export class FacadeService {
     return this._dimensionSevice;
   }
   
-  private _smmModelService: SmmModelService;
-  private get smmModelService(): SmmModelService {
-    if(!this._smmModelService){
-      this._smmModelService = this.injector.get(SmmModelService);
-    }
-    return this._smmModelService;
-  }
-  
   private _pctService: PctService;
   private get pctService(): PctService {
     if(!this._pctService){
@@ -68,6 +61,22 @@ export class FacadeService {
       this._phaseService = this.injector.get(PhaseService);
     }
     return this._phaseService;
+  }
+  
+  private _smmModelService: SmmModelService;
+  private get smmModelService(): SmmModelService {
+    if(!this._smmModelService){
+      this._smmModelService = this.injector.get(SmmModelService);
+    }
+    return this._smmModelService;
+  }
+  
+  private _startupModelService: StartupModelService;
+  private get startupModelService(): StartupModelService {
+    if(!this._startupModelService){
+      this._startupModelService = this.injector.get(StartupModelService);
+    }
+    return this._startupModelService;
   }
   
   private _startupService: StartupService;
@@ -118,5 +127,9 @@ export class FacadeService {
   postStartup(startup){return this.startupService.post(startup)}
   putStartup(startup){return this.startupService.put(startup)}
   deleteStartup(id){return this.startupService.delete(id)}
+
+  // Startup Model Service
+  getStartupModel(id){return this.startupModelService.get(id)}
+  postStartupModel(startupModel){return this.startupModelService.post(startupModel)}
 
 }
