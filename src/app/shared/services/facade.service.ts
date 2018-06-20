@@ -108,6 +108,7 @@ export class FacadeService {
   getSmmModels(){return this.smmModelService.get()}
   getSmmModelsByPct(pctId){return this.smmModelService.getByPct(pctId)}
   getSmmModelActivities(smmModelId){return this.smmModelService.getActivities(smmModelId)}
+  getSmmModelActionPlans(smmModelId){return this.smmModelService.getActionPlans(smmModelId)}
   postSmmModel(smmModel){return this.smmModelService.post(smmModel)}
   deleteSmmModel(smmModelId){return this.smmModelService.delete(smmModelId)}
 
@@ -130,6 +131,6 @@ export class FacadeService {
 
   // Startup Model Service
   getStartupModel(id){return this.startupModelService.get(id)}
-  postStartupModel(startupModel){return this.startupModelService.post(startupModel)}
+  postStartupModel(startupModel, startupId){return this.startupModelService.post(startupModel, startupId)}
 
 }

@@ -6,7 +6,7 @@ import { BaseService } from './base.service';
 export class SmmModelService {
 
   url = 'smm-model';
-  urlActionPlan = 'action-plan/model'
+  urlActionPlan = 'action-plan/'
 
   constructor(private baseService: BaseService) { }
 
@@ -20,7 +20,13 @@ export class SmmModelService {
   }
 
   getActivities(smmModelId){
-    return this.baseService.getWithParams(this.urlActionPlan, smmModelId)
+    let url = this.urlActionPlan + 'model';
+    return this.baseService.getWithParams(url, smmModelId)
+  }
+
+  getActionPlans(smmModelId){
+    let url = this.urlActionPlan + 'startup';
+    return this.baseService.getWithParams(url, smmModelId)
   }
 
   getById(id: string){

@@ -12,7 +12,7 @@
       </div>
       <div class="input-field col s12 m6" *ngIf="!startup.hasModel">
         <mat-form-field>
-          <mat-select placeholder="Modelo Base" (selectionChange)="setActivitiesFromApi($event.value)">
+          <mat-select placeholder="Modelo Base" (selectionChange)="setStartupModelsFromApi($event.value)">
             <mat-option value="option" disabled>Baseado em</mat-option>
             <mat-option value="0">Nenhum</mat-option>
             <mat-option *ngFor="let smmModel of smmModels" [value]="smmModel.id">{{smmModel.name}}</mat-option>
@@ -42,7 +42,7 @@
             </tr>
           </thead>
           <tbody style="font-size: 12px">
-            <tr *ngFor="let actionPlan of actionPlans; let i = index">
+            <tr *ngFor="let startupModel of startupModels; let i = index">
               <!-- <td>
                 <div class="index-flex">
                   <i class="material-icons clickable" (click)="getUp(i)">keyboard_arrow_up</i>
@@ -52,24 +52,24 @@
               </td> -->
               <td>
                 <label>
-                  <input type="checkbox" [(ngModel)]="actionPlans[i].is_done" />
+                  <input type="checkbox" [(ngModel)]="startupModels[i].is_done" />
                   <span></span>
                 </label>
               </td>
-              <td class="{{actionPlan.activity.dimension.name[0] + '-color'}}">{{actionPlan?.activity?.dimension?.name}}</td>
-              <td>{{actionPlan?.activity?.activity_type?.initials}}</td>
-              <td>{{actionPlan?.activity?.description}}</td>
+              <td class="{{startupModel.actionPlan.activity.dimension.name[0] + '-color'}}">{{startupModel?.actionPlan?.activity?.dimension?.name}}</td>
+              <td>{{startupModel?.actionPlan?.activity?.activity_type?.initials}}</td>
+              <td>{{startupModel?.actionPlan?.activity?.description}}</td>
               <td>
-                <mat-select [(ngModel)]="actionPlans[i].priority" placeholder="0">
+                <mat-select [(ngModel)]="startupModels[i].priority" placeholder="0">
                   <mat-option value="1">1</mat-option>
                   <mat-option value="2">2</mat-option>
                   <mat-option value="3">3</mat-option>
                 </mat-select>
               </td>
-              <td><input type="date" [(ngModel)]="actionPlans[i].foreseen_date"></td>
-              <td><input type="date" [(ngModel)]="actionPlans[i].accomplished_date"></td>
-              <td><input class="min-100" type="text" [(ngModel)]="actionPlans[i].pct_cost"></td>
-              <td><input class="min-100" type="text" [(ngModel)]="actionPlans[i].startup_cost"></td>
+              <td><input type="date" [(ngModel)]="startupModels[i].foreseen_date"></td>
+              <td><input type="date" [(ngModel)]="startupModels[i].accomplished_date"></td>
+              <td><input class="min-100" type="text" [(ngModel)]="startupModels[i].pct_cost"></td>
+              <td><input class="min-100" type="text" [(ngModel)]="startupModels[i].startup_cost"></td>
             </tr>
           </tbody>
         </table>

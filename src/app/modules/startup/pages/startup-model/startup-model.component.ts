@@ -1,12 +1,12 @@
+import { IStartupModel } from './../../../../interfaces/startup-model';
+import { IActionPlan } from './../../../../interfaces/action-plan';
 import { ISmmModel } from './../../../../interfaces/smm-model';
 import { IActivity } from './../../../../interfaces/activity';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FacadeService } from '../../../../shared/services/facade.service';
 import { IPhase } from '../../../../interfaces/phase';
-import { IStartupModel } from '../../../../interfaces/startup-model';
 import { IStartup } from '../../../../interfaces/startup';
-import { IActionPlan } from '../../../../interfaces/action-plan';
 
 @Component({
   selector: 'app-startup-model',
@@ -18,6 +18,7 @@ export class StartupModelComponent implements OnInit {
   phases: IPhase[] = [];
   actionPlansFromApi: IActionPlan[] = [];
   actionPlans: IActionPlan[] = [];
+  startupModelsFromApi: any[] = [];
   startupModels: IStartupModel[] = [];
   smmModels: ISmmModel[] = [];
 
@@ -51,9 +52,9 @@ export class StartupModelComponent implements OnInit {
           let id = params['id'];
           this.facade.getStartupsById(id)
             .subscribe(res => {
-              this.startup = res
-              if(!this.startup.hasModel){
-                this.setActionPlansFromApi(id);
+              this.startup = res;
+              if(this.startup.hasModel){
+                this.setStartupModelsByStartup(id);
               }
             });
         }else{
@@ -74,29 +75,43 @@ export class StartupModelComponent implements OnInit {
 
   setCurrentPhase(phaseId){
     this.currentPhase = phaseId;
-    this.setActionPlans(phaseId);
+    this.setStartupModels(phaseId);
   }
 
-  setActionPlans(phaseId){
-    this.actionPlans = [];
-    this.actionPlans = this.actionPlansFromApi
-      .filter(ap => ap.activity.phaseId == phaseId)
+  setStartupModels(phaseId){
+    this.startupModels = [];
+    this.startupModels = this.startupModelsFromApi
+      .filter(sm => sm.actionPlan.activity.phaseId == phaseId);
   }
 
-  setActionPlansFromApi(startupId){
+  setStartupModelsByStartup(startupId){
     this.facade.getStartupModel(startupId)
-      .subscribe(res => this.actionPlansFromApi = res);
-  }
+      .subscribe(res => {
+        this.startupModelsFromApi = res;
+        this.setStartupModels(this.currentPhase);
+      });
+ }
 
-  setActivitiesFromApi(smmModelId){
-    this.facade.getSmmModelActivities(smmModelId)
-      .subscribe((res: IActivity[]) => {
-        this.actionPlansFromApi = res.map(activity => {
-          let actionPlan: IActionPlan = { activity: {}};
-          actionPlan.activity = activity;
-          return actionPlan;
-        })
-        this.setActionPlans(this.currentPhase);
+  setStartupModelsFromApi(smmModelId){
+    this.facade.getSmmModelActionPlans(smmModelId)
+      .subscribe((res: IActionPlan[]) => {
+        this.startupModelsFromApi = res.map( ap => {
+          let startupModel: IStartupModel = {
+            is_done: false,
+            foreseen_date: null,
+            accomplished_date: null,
+            realization_place: '',
+            pct_cost: 0,
+            startup_cost: 0,
+            startup: {},
+            startupId: this.startup.id,
+            actionPlanId: ap.id,
+            actionPlan: ap
+          };
+
+          return startupModel;
+        });
+        this.setStartupModels(this.currentPhase);
       });
   }
 
@@ -105,7 +120,17 @@ export class StartupModelComponent implements OnInit {
   getDown(i){}
 
   save(){
-    this.facade.postStartupModel(this.startupModels)
+    let ligthActionModel = this.lightfyStartupModel(this.startupModelsFromApi)
+    this.facade.postStartupModel(ligthActionModel, this.startup.id)
       .subscribe(console.log);
+  }
+
+  lightfyStartupModel(startupModels: IStartupModel[]){
+    return startupModels.map( ap => {
+      let startupModel: IStartupModel = ap;
+      startupModel.actionPlanId = ap.actionPlan.id;
+      startupModel.actionPlan = {};
+      return startupModel;
+    })
   }
 }

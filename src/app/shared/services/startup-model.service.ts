@@ -17,8 +17,9 @@ export class StartupModelService {
     return this.baseService.getById(this.url, id);
   }
 
-  post(startupModel: IStartupModel){
-    return this.baseService.post(this.url, startupModel);
+  post(startupModel: IStartupModel, startupId){
+    let url = this.url + '/' + startupId;
+    return this.baseService.post(url, startupModel);
   }
 
   put(startupModel: IStartupModel){

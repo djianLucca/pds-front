@@ -22,7 +22,6 @@ import { StartupService } from './startup.service';
   declarations: [],
   providers: [
     FacadeService,
-
     ActivityService,
     ActivityTypeService,
     AreaService,
