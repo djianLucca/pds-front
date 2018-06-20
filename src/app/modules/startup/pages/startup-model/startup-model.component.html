@@ -56,14 +56,14 @@
                   <span></span>
                 </label>
               </td>
-              <td class="{{startupModel.actionPlan.activity.dimension.name[0] + '-color'}}">{{startupModel?.actionPlan?.activity?.dimension?.name}}</td>
-              <td>{{startupModel?.actionPlan?.activity?.activity_type?.initials}}</td>
-              <td>{{startupModel?.actionPlan?.activity?.description}}</td>
+              <td class="{{startupModel.action_plan.activity.dimension.name[0] + '-color'}}">{{startupModel?.action_plan?.activity?.dimension?.name}}</td>
+              <td>{{startupModel?.action_plan?.activity?.activity_type?.initials}}</td>
+              <td>{{startupModel?.action_plan?.activity?.description}}</td>
               <td>
-                <mat-select [(ngModel)]="startupModels[i].priority" placeholder="0">
-                  <mat-option value="1">1</mat-option>
-                  <mat-option value="2">2</mat-option>
-                  <mat-option value="3">3</mat-option>
+                <mat-select [(ngModel)]="startupModels[i].priority">
+                  <mat-option [value]="1">1</mat-option>
+                  <mat-option [value]="2">2</mat-option>
+                  <mat-option [value]="3">3</mat-option>
                 </mat-select>
               </td>
               <td><input type="date" [(ngModel)]="startupModels[i].foreseen_date"></td>

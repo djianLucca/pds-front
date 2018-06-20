@@ -81,7 +81,7 @@ export class StartupModelComponent implements OnInit {
   setStartupModels(phaseId){
     this.startupModels = [];
     this.startupModels = this.startupModelsFromApi
-      .filter(sm => sm.actionPlan.activity.phaseId == phaseId);
+      .filter(sm => sm.action_plan.activity.phaseId == phaseId);
   }
 
   setStartupModelsByStartup(startupId){
@@ -106,7 +106,7 @@ export class StartupModelComponent implements OnInit {
             startup: {},
             startupId: this.startup.id,
             actionPlanId: ap.id,
-            actionPlan: ap
+            action_plan: ap
           };
 
           return startupModel;
@@ -128,8 +128,8 @@ export class StartupModelComponent implements OnInit {
   lightfyStartupModel(startupModels: IStartupModel[]){
     return startupModels.map( ap => {
       let startupModel: IStartupModel = ap;
-      startupModel.actionPlanId = ap.actionPlan.id;
-      startupModel.actionPlan = {};
+      startupModel.actionPlanId = ap.action_plan.id;
+      startupModel.action_plan = {};
       return startupModel;
     })
   }

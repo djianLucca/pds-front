@@ -13,6 +13,6 @@ export interface IStartupModel {
     note?: string;
     actionPlanId?: string;
     startupId?: string;
-    actionPlan?: IActionPlan;
+    action_plan?: IActionPlan;
     startup?: IStartup;
 }
