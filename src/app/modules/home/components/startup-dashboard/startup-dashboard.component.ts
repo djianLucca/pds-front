@@ -38,7 +38,7 @@ export class StartupDashboardComponent implements OnInit {
       {data: [0, 0, 0, 0, 0], label: 'Finanças'},
       {data: [0, 0, 0, 0, 0], label: 'Inovação'},
       {data: [0, 0, 0, 0, 0], label: 'Gestão'},
-      {data: [0, 0, 0, 0, 0], label: 'Comlementares'}
+      {data: [0, 0, 0, 0, 0], label: 'Complementar'}
     ];
 
     dataToModel.forEach(data => {
@@ -82,7 +82,7 @@ export class StartupDashboardComponent implements OnInit {
         return 3;
       case 'Gestão':
         return 4;
-      case 'Comlementares':
+      case 'Complementar':
         return 5;
       default:
         return -1;
