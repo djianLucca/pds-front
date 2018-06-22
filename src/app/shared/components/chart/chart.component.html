@@ -1,1 +1,29 @@
-{{data|json}}
+<!-- <div>
+<canvas 
+    baseChart 
+    width="100%" 
+    height="50%" 
+    [datasets]="data" 
+    [labels]="labels" 
+    [legend]="true"
+    [chartType]="'bar'" 
+    [options]="options"
+    [colors]="cor"
+    >
+</canvas>
+</div> -->
+
+
+<div>
+    <canvas 
+        baseChart 
+        width="400" 
+        height="85"
+        [datasets]="lineChartData"
+        [labels]="lineChartLabels"
+        [options]="lineChartOptions"
+        [colors]="lineChartColors"
+        [legend]="lineChartLegend"
+        [chartType]="lineChartType"
+    ></canvas>
+</div>

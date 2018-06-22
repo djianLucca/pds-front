@@ -23,6 +23,7 @@
         "../node_modules/materialize-css/dist/css/materialize.min.css"
       ],
       "scripts": [
+        "../node_modules/ng2-charts/charts/charts.js",
         "../node_modules/materialize-css/dist/js/materialize.min.js"
       ],
       "environmentSource": "environments/environment.ts",
