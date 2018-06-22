@@ -11,6 +11,7 @@ import { SmmModelService } from './smm-model.service';
 import { PctService } from './pct.service';
 import { PhaseService } from './phase.service';
 import { StartupService } from './startup.service';
+import { ChartService } from './chart.service';
 
 @Injectable()
 export class FacadeService {
@@ -37,6 +38,14 @@ export class FacadeService {
       this._areaService = this.injector.get(AreaService);
     }
     return this._areaService;
+  }
+  
+  private _chartService: ChartService;
+  private get chartService(): ChartService {
+    if(!this._chartService){
+      this._chartService = this.injector.get(ChartService);
+    }
+    return this._chartService;
   }
   
   private _dimensionSevice: DimensionService;
@@ -100,6 +109,9 @@ export class FacadeService {
 
   // Area Service
   getAreas(){return this.areaService.get()}
+
+  // Chart Service
+  getChart(startupId, isDone = false){return this.chartService.get(startupId, isDone)}
 
   // Dimension Service
   getDimensions(){return this.dimensionSevice.get()}

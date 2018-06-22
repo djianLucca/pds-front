@@ -8,6 +8,7 @@ import { FacadeService } from './facade.service';
 import { ActivityService } from './activity.service';
 import { ActivityTypeService } from './activity-type.service';
 import { AreaService } from './area.service';
+import { ChartService } from './chart.service';
 import { BaseService } from './base.service';
 import { DimensionService } from './dimension.service';
 import { SmmModelService } from './smm-model.service';
@@ -26,6 +27,7 @@ import { StartupService } from './startup.service';
     ActivityTypeService,
     AreaService,
     BaseService,
+    ChartService,
     DimensionService,
     SmmModelService,
     PctService,

@@ -1,3 +1,4 @@
+import { ChartModule } from './../../shared/components/chart/chart.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -14,7 +15,8 @@ import { MatButtonModule, MatTabsModule } from '@angular/material';
     HomeRoutingModule,
     MatTabsModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartModule
   ],
   declarations: [HomeComponent, SidenavComponent, StartupDashboardComponent]
 })
