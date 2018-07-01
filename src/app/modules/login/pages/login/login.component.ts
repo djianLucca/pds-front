@@ -71,7 +71,10 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if (!this.formLogin.valid) return false;
+    if (!this.formLogin.valid){
+      this.openSnackBar('Preencha os campos corretamente');
+      return false;
+    }
 
     this.isLoading = true;
 
@@ -81,6 +84,7 @@ export class LoginComponent implements OnInit {
 
         if (!res.token){
           this.openSnackBar('Login ou senha inválidos');
+          return false;
         }
 
         this._auth.token = res.token;
@@ -94,6 +98,7 @@ export class LoginComponent implements OnInit {
 
   signUp() {
     if (!this.formSignUp.valid) {
+      this.openSnackBar('Preencha os campos corretamente');
       return false;
     }
 
