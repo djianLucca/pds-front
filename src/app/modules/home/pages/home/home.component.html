@@ -1,6 +1,6 @@
 <app-sidenav [pct]="activePct"></app-sidenav>
 <div class="main">
-    <div class="flat-card no-top">
+    <div *ngIf="startups[0]" class="flat-card no-top">
         <mat-tab-group >
             <mat-tab *ngFor="let startup of startups">
                 <ng-template mat-tab-label>
@@ -9,5 +9,8 @@
                 <app-startup-dashboard [startupId]="startup.id"></app-startup-dashboard>
             </mat-tab>
         </mat-tab-group>
+    </div>
+    <div *ngIf="!startups[0]" class="icons">
+        <img src="assets/images/5.png">
     </div>
 </div>

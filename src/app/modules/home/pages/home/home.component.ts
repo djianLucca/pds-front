@@ -41,4 +41,5 @@ export class HomeComponent implements OnInit {
   setActivePct(){
     this.activePct = this._auth.tokenDecoded
   }
+
 }
