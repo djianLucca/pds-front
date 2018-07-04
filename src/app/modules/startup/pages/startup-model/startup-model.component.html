@@ -2,6 +2,7 @@
   <div class="header-bg"></div>
   <div class="header-content">
     <h5 class="white-text">Modelo da Startup</h5>
+    <button mat-raised-button routerLink="/startups" class="white-text transparency-dark">VOLTAR</button>
   </div>
   
   <br><br>
@@ -26,7 +27,19 @@
         <ng-template mat-tab-label>
           {{phase.name}}
         </ng-template>
-        <table>
+
+        <div class="row" *ngIf="isLoading">
+          <br>
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+
+        <div *ngIf="!startupModels[0] && !isLoading"  class="empty-array-warning">
+          <br>
+          <br>
+          <span class="grey-text text-lighten-1 italic">Nenhuma atividade para ser listada.</span>
+        </div>
+
+        <table *ngIf="startupModels[0] && !isLoading">
           <thead>
             <tr>
               <!-- <th></th> -->
@@ -77,9 +90,9 @@
     </mat-tab-group>
 
     <div class="row">
-      <div class="col s12">
+      <div class="col s12 m3 offset-m9">
         <button mat-raised-button routerLink="/startups" class="grey white-text">CANCELAR</button>
-        <button mat-raised-button (click)="save()" class="white-text secondary-color" [class.disabled]="hasPressedSave">CADASTRAR</button>
+        <button mat-raised-button (click)="save()" class="white-text secondary-color" [class.disabled]="hasPressedSave">SALVAR</button>
       </div>
     </div>
 </div>

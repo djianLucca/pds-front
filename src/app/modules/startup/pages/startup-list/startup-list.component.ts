@@ -17,7 +17,7 @@ export class StartupListComponent implements OnInit {
 
   constructor(
     private facade: FacadeService,
-    private _router: Router,
+    private _router: Router
   ) { }
 
   ngOnInit() {
@@ -27,6 +27,10 @@ export class StartupListComponent implements OnInit {
   getStartups(){
     this.facade.getStartups()
       .subscribe( response => this.startups = new MatTableDataSource(response));
+  }
+
+  editStartup(id){
+    this._router.navigate(['/startups/form/'], {queryParams: { id }});
   }
 
   deleteStartup(id){

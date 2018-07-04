@@ -3,6 +3,18 @@
     <ng-template mat-tab-label>
       {{phase.name}}
     </ng-template>
+
+    <div class="row" *ngIf="isLoading">
+      <br>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+
+    <div *ngIf="!activities[0] && !isLoading"  class="empty-array-warning">
+      <br>
+      <br>
+      <span class="grey-text text-lighten-1 italic">Nenhuma atividade para ser listada.</span>
+    </div>
+
     <table>
       <thead>
         <tr *ngIf="!isViewMode" style="font-size: 12px">
@@ -34,7 +46,7 @@
           <th *ngIf="!isViewMode">Ação</th>
         </tr>
       </thead>
-      <tbody style="font-size: 12px">
+      <tbody style="font-size: 12px"  *ngIf="activities[0] && !isLoading">
         <tr *ngFor="let activity of activities">
           <td class="{{activity.dimension.name[0] + '-color'}}">{{activity?.dimension?.name}}</td>
           <td>{{activity?.activity_type?.initials}}</td>

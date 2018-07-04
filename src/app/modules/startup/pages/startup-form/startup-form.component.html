@@ -2,6 +2,7 @@
   <div class="header-bg"></div>
   <div class="header-content">
     <h5 class="white-text">Cadastrar Startup</h5>
+    <button mat-raised-button routerLink="/models" class="white-text transparency-dark">VOLTAR</button>
   </div>
  
   <br><br>
@@ -26,9 +27,13 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="col s12 m4 offset-m2">
+    </div>
+    <div class="divider"></div>
+    <br>
+    <div class="row">
+      <div class="col s12 m3 offset-m9">
         <button mat-raised-button routerLink="/startups" class="grey white-text">CANCELAR</button>
-        <button mat-raised-button type="submit" class="white-text secondary-color" [class.disabled]="hasPressedSave">CADASTRAR</button>
+        <button mat-raised-button type="submit" class="white-text secondary-color" [class.disabled]="hasPressedSave">SALVAR</button>
       </div>
     </div>
   </form>

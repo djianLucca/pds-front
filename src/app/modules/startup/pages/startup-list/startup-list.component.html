@@ -2,7 +2,7 @@
   <div class="header-bg"></div>
   <div class="header-content">
     <h5 class="white-text">Startups</h5>
-    <button mat-raised-button routerLink="form" class="white-text secondary-color">+ CADASTRAR</button>
+    <button mat-flat-button routerLink="form" class="white-text transparency-dark">+ CADASTRAR</button>
   </div>
 
   <br><br>
@@ -35,8 +35,9 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
       <mat-cell *matCellDef="let startup"> 
-          <i class="material-icons clickable" (click)="editModel(startup.id)">list</i>
-          <i class="material-icons clickable">edit</i>
+          <i *ngIf="!startup.hasModel" class="material-icons clickable light-green-text" (click)="editModel(startup.id)">playlist_add</i>
+          <i *ngIf="startup.hasModel" class="material-icons clickable" (click)="editModel(startup.id)">playlist_add_check</i>
+          <i class="material-icons clickable" (click)="editStartup(startup.id)">edit</i>
           <i class="material-icons clickable" (click)="deleteStartup(startup.id)">delete</i>
 
       </mat-cell>

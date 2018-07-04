@@ -23,7 +23,8 @@ export class StartupModelComponent implements OnInit {
   smmModels: ISmmModel[] = [];
 
   isHover = false;
-
+  isLoading = false;
+ 
   startup: IStartup = {};
 
   currentPhase = '';
@@ -93,6 +94,7 @@ export class StartupModelComponent implements OnInit {
  }
 
   setStartupModelsFromApi(smmModelId){
+    this.isLoading = true;
     this.facade.getSmmModelActionPlans(smmModelId)
       .subscribe((res: IActionPlan[]) => {
         this.startupModelsFromApi = res.map( ap => {
@@ -112,6 +114,7 @@ export class StartupModelComponent implements OnInit {
           return startupModel;
         });
         this.setStartupModels(this.currentPhase);
+        this.isLoading = false;
       });
   }
 
@@ -122,7 +125,7 @@ export class StartupModelComponent implements OnInit {
   save(){
     let ligthActionModel = this.lightfyStartupModel(this.startupModelsFromApi)
     this.facade.postStartupModel(ligthActionModel, this.startup.id)
-      .subscribe(console.log);
+      .subscribe(() => this._router.navigateByUrl('/startup'));
   }
 
   lightfyStartupModel(startupModels: IStartupModel[]){

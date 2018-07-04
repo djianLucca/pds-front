@@ -69,6 +69,9 @@ export class SmmModelListComponent implements OnInit {
 @Component({
   selector: 'dialog-overview-example-dialog',
   template: `
+  <button (click)="close()" mat-fab style="right: 5px;background-color: var(--second-color);posi;position: absolute;top: 5px; z-index:2">
+    <mat-icon>clear</mat-icon>
+  </button>
   <app-activity-list
     [phases]="phases"
     [activities]="activities"
@@ -97,6 +100,10 @@ export class DialogOverviewExampleDialog {
   }
 
   onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  close(){
     this.dialogRef.close();
   }
 

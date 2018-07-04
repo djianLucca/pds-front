@@ -17,6 +17,7 @@ export class ActivityListComponent implements OnInit {
   @Input() activitiesTypes: IActivityType[] = [];
   @Input() activities: IActivity[] = [];
   @Input() isViewMode = true;
+  @Input() isLoading = false;
 
   @Output() phaseChange = new EventEmitter<any>(); 
   @Output() addActivity = new EventEmitter<any>(); 

@@ -24,6 +24,8 @@ export class SmmModelFormComponent implements OnInit {
   activitiesFromAPi: IActivity[] = [];
   activities: IActivity[] = [];
 
+  isLoading = false;
+
   currentPhase = '';
 
   smmModel: ISmmModel = {};
@@ -90,10 +92,13 @@ export class SmmModelFormComponent implements OnInit {
   setActivitiesFromApi(smmModelId){
     if(smmModelId == '0') return false;
 
+    this.isLoading = true;
+
     this.facade.getSmmModelActivities(smmModelId)
       .subscribe(res => {
         this.activitiesFromAPi = res;
         this.setActivities(this.currentPhase);
+        this.isLoading = false;
       });
   }
 

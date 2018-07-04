@@ -11,7 +11,7 @@
             <i class="material-icons">explore</i>
           </mat-button-toggle>
         </mat-button-toggle-group>
-      <button mat-raised-button routerLink="form" class="white-text secondary-color">+ CADASTRAR</button>
+      <button mat-raised-button routerLink="form" class="white-text transparency-dark">+ CADASTRAR</button>
     </div>
   </div>
 
@@ -35,7 +35,7 @@
       <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
       <mat-cell *matCellDef="let smmModel"> 
           <i class="material-icons clickable" (click)="openDialog(smmModel.id)">visibility</i>
-          <i class="material-icons clickable">edit</i>
+          <i *ngIf="isOwner(smmModel.pct.id)" (click)="editSmmModel(smmModel.id)" class="material-icons clickable">edit</i>
           <i *ngIf="isOwner(smmModel.pct.id)" (click)="deleteSmmModel(smmModel.id)" class="material-icons clickable">delete</i>
       </mat-cell>
     </ng-container>

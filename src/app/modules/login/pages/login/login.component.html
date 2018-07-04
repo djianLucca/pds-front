@@ -40,6 +40,8 @@
               <label for="icon_telephone" class="active">Senha</label> 
             </div>
           </div>
+          <div class="divider"></div>
+          <br>
           <div class="row" *ngIf="!isLoading">
             <div class="col s12 m7 offset-m5">
               <button mat-raised-button type="button" (click)="changeForm()" class="white secondary-color-text">CADASTRAR-SE</button>
@@ -73,10 +75,12 @@
                 <label for="password_input" class="active">Senha</label> 
               </div>
             </div>
+            <div class="divider"></div>
+            <br>
             <div class="row" *ngIf="!isLoading">
               <div class="col s12 m5 offset-m7">
                 <button mat-raised-button type="button" (click)="changeForm()" class="white secondary-color-text">ENTRAR</button>
-                <button mat-raised-button type="submit" class="white-text secondary-color">CADASTRAR-SE</button>
+                <button mat-raised-button type="submit" class="white-text secondary-color">SALVAR</button>
               </div>
             </div>
             <div class="row" *ngIf="isLoading">

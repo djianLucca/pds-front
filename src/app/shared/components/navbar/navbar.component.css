@@ -1,5 +1,5 @@
 .nav-wrapper{
-    background-color: var(--main-color); 
+    background-image: linear-gradient(to right, var(--second-color), var(--main-color));
 }
 .brand-logo{
     padding-left: 32px;

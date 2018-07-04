@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivityListComponent } from './activity-list.component';
 
 import { FormsModule } from '@angular/forms';
-import { MatInputModule, MatSelectModule, MatIconModule, MatButtonModule, MatTabsModule } from '@angular/material';
+import { MatInputModule, MatSelectModule, MatIconModule, MatButtonModule, MatTabsModule, MatProgressBar, MatProgressBarModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -13,6 +13,7 @@ import { MatInputModule, MatSelectModule, MatIconModule, MatButtonModule, MatTab
     MatIconModule,
     MatButtonModule,
     MatTabsModule,
+    MatProgressBarModule,
     FormsModule,
   ],
   exports: [ActivityListComponent],
