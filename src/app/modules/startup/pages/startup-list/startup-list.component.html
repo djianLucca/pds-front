@@ -6,13 +6,20 @@
   </div>
 
   <br><br>
-<!-- 
-  <div class="table-placeholder" *ngIf="!startups[0]">
-    <p class="grey-text text-lighten-1">Nenhuma startup para ser listada!</p>
-    {{startups|json}}
-  </div> -->
 
-  <mat-table  [dataSource]="startups">
+  <div class="row" *ngIf="isLoading">
+    <br>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+
+  <div *ngIf="isEmpty && !isLoading"  class="empty-array-warning">
+    <br>
+    <br>
+    <span class="grey-text text-lighten-1 italic">Nenhuma startup para ser listada.</span>
+    <br><br>
+  </div>
+
+  <mat-table  [dataSource]="startups" *ngIf="!isEmpty && !isLoading">
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>

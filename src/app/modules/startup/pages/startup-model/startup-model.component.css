@@ -1,15 +1,15 @@
 mat-tab-group{
     margin-bottom: 30px;
 }
-td {
+.my-td {
     padding: 5px 5px;
     border-radius: 0px; 
 }
-table * {
+.my-table * {
     font-size: 12px
 }
-input[type=date]:not(.browser-default){
-    max-width: 120px;
+.date-input{
+    max-width: 115px !important;
 }
 .act-td{
     max-width: 200px;
@@ -22,9 +22,4 @@ input[type=text]:not(.browser-default){
     flex-direction: column;
     justify-content: space-between;
     align-items: center; 
-}
-.empty-array-warning{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }

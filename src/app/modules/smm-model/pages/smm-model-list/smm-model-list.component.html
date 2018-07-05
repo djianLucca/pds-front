@@ -17,7 +17,18 @@
 
   <br><br>
 
-  <mat-table [dataSource]="smmModels">
+  <div class="row" *ngIf="isLoading">
+    <br>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+
+  <div *ngIf="isEmpty && !isLoading"  class="empty-array-warning">
+    <br>
+    <br>
+    <span class="grey-text text-lighten-1 italic">Nenhum modelo para ser listado.</span>
+  </div>
+
+  <mat-table  [dataSource]="smmModels" *ngIf="!isEmpty && !isLoading">
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef style="flex: 2"> Nome </mat-header-cell>

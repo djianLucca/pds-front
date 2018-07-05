@@ -181,3 +181,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .mat-dialog-container{
     position: relative;
 }
+.empty-array-warning{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

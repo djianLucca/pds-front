@@ -9,12 +9,6 @@
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
 
-    <div *ngIf="!activities[0] && !isLoading"  class="empty-array-warning">
-      <br>
-      <br>
-      <span class="grey-text text-lighten-1 italic">Nenhuma atividade para ser listada.</span>
-    </div>
-
     <table>
       <thead>
         <tr *ngIf="!isViewMode" style="font-size: 12px">
@@ -39,7 +33,7 @@
             <button type="button" mat-mini-fab (click)="emitAddActivity()" class="white-text secondary-color"><mat-icon>add</mat-icon></button>
           </td>
         </tr>
-        <tr>
+        <tr  *ngIf="activities[0] && !isLoading">
           <th>Dimensão</th>
           <th>Tipo</th>
           <th>Descrição</th>
@@ -55,5 +49,11 @@
         </tr>
       </tbody>
     </table>
+    <div *ngIf="!activities[0] && !isLoading"  class="empty-array-warning">
+      <br>
+      <br>
+      <span class="grey-text text-lighten-1 italic">Nenhuma atividade para ser listada.</span>
+    </div>
+
   </mat-tab>
 </mat-tab-group>

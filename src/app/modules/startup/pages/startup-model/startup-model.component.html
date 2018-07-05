@@ -20,6 +20,14 @@
           </mat-select>
         </mat-form-field>
       </div>
+      <!-- <div class="col s12 m3 input-field">
+          <input id="start" type="date" [(ngModel)]="dateStart">
+          <label for="start">Data Inicial</label>
+      </div>
+      <div class="col s12 m3 input-field">
+          <input id="end" type="date" [(ngModel)]="dateEnd">
+          <label for="end">Data Final</label>
+      </div> -->
     </div>
     
     <mat-tab-group (selectedTabChange)="setCurrentPhase($event.tab.textLabel)">
@@ -39,10 +47,10 @@
           <span class="grey-text text-lighten-1 italic">Nenhuma atividade para ser listada.</span>
         </div>
 
-        <table *ngIf="startupModels[0] && !isLoading">
+        <table class="my-table" *ngIf="startupModels[0] && !isLoading">
           <thead>
             <tr>
-              <!-- <th></th> -->
+              <th></th>
               <th><i style="font-size: 24px !important" class="material-icons">done</i></th>
               <th>Dimensão</th>
               <th>Tipo</th>
@@ -56,33 +64,33 @@
           </thead>
           <tbody style="font-size: 12px">
             <tr *ngFor="let startupModel of startupModels; let i = index">
-              <!-- <td>
+              <td class="my-td">
                 <div class="index-flex">
                   <i class="material-icons clickable" (click)="getUp(i)">keyboard_arrow_up</i>
                   <span class="grey-text text-lighten-1">{{i + 1}}</span>
                   <i class="material-icons clickable" (click)="getDown(i)">keyboard_arrow_down</i>
                 </div>
-              </td> -->
-              <td>
+              </td>
+              <td class="my-td">
                 <label>
-                  <input type="checkbox" [(ngModel)]="startupModels[i].is_done" />
+                  <input type="checkbox" [(ngModel)]="startupModels[i].is_done" (click)="setAccomplishedData(i)"/>
                   <span></span>
                 </label>
               </td>
-              <td class="{{startupModel.action_plan.activity.dimension.name[0] + '-color'}}">{{startupModel?.action_plan?.activity?.dimension?.name}}</td>
-              <td>{{startupModel?.action_plan?.activity?.activity_type?.initials}}</td>
-              <td>{{startupModel?.action_plan?.activity?.description}}</td>
-              <td>
+              <td class="my-td" class="{{startupModel.action_plan.activity.dimension.name[0] + '-color'}}">{{startupModel?.action_plan?.activity?.dimension?.name}}</td>
+              <td class="my-td">{{startupModel?.action_plan?.activity?.activity_type?.initials}}</td>
+              <td class="my-td">{{startupModel?.action_plan?.activity?.description}}</td>
+              <td class="my-td">
                 <mat-select [(ngModel)]="startupModels[i].priority">
                   <mat-option [value]="1">1</mat-option>
                   <mat-option [value]="2">2</mat-option>
                   <mat-option [value]="3">3</mat-option>
                 </mat-select>
               </td>
-              <td><input type="date" [(ngModel)]="startupModels[i].foreseen_date"></td>
-              <td><input type="date" [(ngModel)]="startupModels[i].accomplished_date"></td>
-              <td><input class="min-100" type="text" [(ngModel)]="startupModels[i].pct_cost"></td>
-              <td><input class="min-100" type="text" [(ngModel)]="startupModels[i].startup_cost"></td>
+              <td class="my-td"><input class="date-input" type="date" [(ngModel)]="startupModels[i].foreseen_date"></td>
+              <td class="my-td"><input class="date-input" type="date" [(ngModel)]="startupModels[i].accomplished_date" (change)="setIsDone(i)"></td>
+              <td class="my-td"><input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" class="min-100" type="text" [(ngModel)]="startupModels[i].pct_cost"></td>
+              <td class="my-td"><input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" class="min-100" type="text" [(ngModel)]="startupModels[i].startup_cost"></td>
             </tr>
           </tbody>
         </table>

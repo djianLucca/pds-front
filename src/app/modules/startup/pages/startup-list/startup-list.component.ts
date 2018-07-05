@@ -14,6 +14,8 @@ export class StartupListComponent implements OnInit {
 
   startups: MatTableDataSource<IStartup[]>;
   displayedColumns = ['name', 'area', 'person', 'actions'];
+  isLoading = false;
+  isEmpty = true;
 
   constructor(
     private facade: FacadeService,
@@ -25,8 +27,14 @@ export class StartupListComponent implements OnInit {
   }
 
   getStartups(){
+    this.isLoading = true;
+    this.isEmpty = true;
     this.facade.getStartups()
-      .subscribe( response => this.startups = new MatTableDataSource(response));
+      .subscribe( response => {
+        this.isLoading = false;
+        if(response[0]) this.isEmpty = false;
+        this.startups = new MatTableDataSource(response);
+      });
   }
 
   editStartup(id){

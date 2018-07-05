@@ -19,6 +19,9 @@ export class SmmModelListComponent implements OnInit {
   isPerson = true;
   pctId: string;
 
+  isLoading = false;
+  isEmpty = true;
+
   constructor(
     private facade: FacadeService,
     private _auth: AuthService,
@@ -35,13 +38,25 @@ export class SmmModelListComponent implements OnInit {
   }
 
   getUserModels(){
+    this.isLoading = true;
+    this.isEmpty = true;
     this.facade.getSmmModelsByPct(this.pctId)
-      .subscribe(res => this.smmModels =  new MatTableDataSource(res))
+      .subscribe(res => {
+        this.isLoading = false;
+        if(res[0]) this.isEmpty = false;
+        this.smmModels =  new MatTableDataSource(res)
+      });
   }
 
   getAllModels(){
+    this.isLoading = true;
+    this.isEmpty = true;
     this.facade.getSmmModels()
-      .subscribe(res => this.smmModels =  new MatTableDataSource(res))
+      .subscribe(res => {
+        this.isLoading = false;
+        if(res[0]) this.isEmpty = false;
+        this.smmModels =  new MatTableDataSource(res)
+      });
   }
 
   toggleChange(isMineList){

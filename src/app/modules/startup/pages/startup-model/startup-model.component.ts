@@ -2,11 +2,12 @@ import { IStartupModel } from './../../../../interfaces/startup-model';
 import { IActionPlan } from './../../../../interfaces/action-plan';
 import { ISmmModel } from './../../../../interfaces/smm-model';
 import { IActivity } from './../../../../interfaces/activity';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FacadeService } from '../../../../shared/services/facade.service';
 import { IPhase } from '../../../../interfaces/phase';
 import { IStartup } from '../../../../interfaces/startup';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-startup-model',
@@ -28,6 +29,9 @@ export class StartupModelComponent implements OnInit {
   startup: IStartup = {};
 
   currentPhase = '';
+
+  startDate = '';
+  endDate = '';
 
 
   constructor(
@@ -122,10 +126,22 @@ export class StartupModelComponent implements OnInit {
 
   getDown(i){}
 
+  setAccomplishedData(i){
+    if(!this.startupModels[i].is_done){
+      this.startupModels[i].accomplished_date = moment().format('YYYY-MM-DD');
+    }else{
+      this.startupModels[i].accomplished_date = '';
+    }
+  }
+
+  setIsDone(i){
+    this.startupModels[i].is_done = true;
+  }
+
   save(){
     let ligthActionModel = this.lightfyStartupModel(this.startupModelsFromApi)
     this.facade.postStartupModel(ligthActionModel, this.startup.id)
-      .subscribe(() => this._router.navigateByUrl('/startup'));
+      .subscribe(() => this._router.navigateByUrl('/startups'));
   }
 
   lightfyStartupModel(startupModels: IStartupModel[]){

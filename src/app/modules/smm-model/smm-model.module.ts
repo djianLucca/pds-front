@@ -5,7 +5,7 @@ import { SmmModelRoutingModule } from './smm-model-routing.module';
 import { SmmModelFormComponent } from './pages/smm-model-form/smm-model-form.component';
 import { SmmModelListComponent, DialogOverviewExampleDialog } from './pages/smm-model-list/smm-model-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatTableModule, MatButtonModule, MatSelectModule, MatButtonToggleModule, MatIconModule, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS, MatTabsModule } from '@angular/material';
+import { MatTableModule, MatButtonModule, MatSelectModule, MatButtonToggleModule, MatIconModule, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS, MatTabsModule, MatProgressBarModule } from '@angular/material';
 import { ActivityListModule } from '../../shared/components/activity-list/activity-list.module';
 
 @NgModule({
@@ -21,6 +21,7 @@ import { ActivityListModule } from '../../shared/components/activity-list/activi
     MatButtonToggleModule,
     MatIconModule,
     MatDialogModule,
+    MatProgressBarModule,
     ActivityListModule
   ],
   providers:[
