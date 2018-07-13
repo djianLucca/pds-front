@@ -13,7 +13,7 @@ export class PctFormComponent implements OnInit {
 
   pctForm: FormGroup;
 
-  pct: IPct = {};
+  pct: IPct = { user: { person: {}}};
 
   constructor(
     private _formBuilder: FormBuilder,
